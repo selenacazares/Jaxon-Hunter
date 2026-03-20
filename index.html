@@ -52,6 +52,28 @@ body {
     animation: glitch 0.3s infinite;
 }
 
+.psy-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.psy-column {
+    flex: 1;
+}
+
+.psy-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.separator {
+    width: 2px;
+    background: #00ff9c;
+    box-shadow: 0 0 8px #00ff9c;
+}
+
 @keyframes glitch {
     0% { transform: translate(0); }
     20% { transform: translate(-1px,1px); }
@@ -291,56 +313,54 @@ if (section === "fenrir") {
     <div class="line">RAPPORTS PSYCHOLOGIQUES</div>
     <div class="line">------------------------------------------</div>
 
-    <div class="line"></div>
-    <div class="line">SUJET : HUNTER, JAXON (GARM)</div>
-    <div class="line">------------------------------------------</div>
+    <div class="psy-container">
 
-    <div class="line">IMPACT POST-OPÉRATIONNEL :</div>
-    <div class="line">- Baisse de discipline administrative</div>
-    <div class="line">- Implication excessive en mission</div>
-    <div class="line">- Tendance à ignorer les ordres</div>
-    <div class="line">  (si conflit avec la sécurité de son escouade)</div>
+        <!-- GARM -->
+        <div class="psy-column">
+            <div class="psy-title">HUNTER, JAXON (GARM)</div>
 
-    <div class="line"></div>
-    <div class="line">OBSERVATION :</div>
-    <div class="line">- Aucune défaillance opérationnelle majeure</div>
-    <div class="line">- Efficacité maintenue, voire accrue</div>
+            <div class="line">IMPACT :</div>
+            <div class="line">- Baisse de discipline</div>
+            <div class="line">- Implication excessive</div>
+            <div class="line">- Ignore certains ordres</div>
+            <div class="line">(protection escouade)</div>
 
-    <div class="line"></div>
-    <div class="line">ÉVALUATION INTERNE :</div>
-    <div class="line">- Sens du devoir élevé</div>
-    <div class="line">- Loyauté extrême envers ses coéquipiers</div>
-    <div class="line">- Résistance psychologique élevée</div>
+            <div class="line"></div>
+            <div class="line">OBSERVATION :</div>
+            <div class="line">- Aucune défaillance</div>
+            <div class="line">- Efficacité accrue</div>
 
-    <div class="line"></div>
-    <div class="line">⚠ RISQUES IDENTIFIÉS :</div>
-    <div class="line">- Attachement prioritaire à certaines cibles</div>
-    <div class="line">  (notamment SANTORO)</div>
-    <div class="line">- Désobéissance possible en cas de conflit moral</div>
+            <div class="line"></div>
+            <div class="line">⚠ RISQUES :</div>
+            <div class="line">- Attachement à SANTORO</div>
+            <div class="line">- Désobéissance morale</div>
+        </div>
 
-    <div class="line"></div>
-    <div class="line">==========================================</div>
+        <!-- SEPARATEUR -->
+        <div class="separator"></div>
 
-    <div class="line"></div>
-    <div class="line">SUJET : VEGA, SANTORO (FENRIR)</div>
-    <div class="line">------------------------------------------</div>
+        <!-- FENRIR -->
+        <div class="psy-column">
+            <div class="psy-title">VEGA, SANTORO (FENRIR)</div>
 
-    <div class="line">ÉVALUATION INTERNE :</div>
-    <div class="line">- Capacités opérationnelles intactes ou supérieures</div>
-    <div class="line">- Obéissance sélective</div>
-    <div class="line">- Signes de conditionnement comportemental</div>
-    <div class="line">  (origine non identifiée)</div>
-    <div class="line">- Profil instable mais fonctionnel en mission</div>
+            <div class="line">ÉVALUATION :</div>
+            <div class="line">- Capacités intactes</div>
+            <div class="line">- Obéissance sélective</div>
+            <div class="line">- Conditionnement inconnu</div>
+            <div class="line">- Instable mais opérationnel</div>
 
-    <div class="line"></div>
-    <div class="line">⚠ RISQUES IDENTIFIÉS :</div>
-    <div class="line">- Déclencheurs inconnus</div>
-    <div class="line">- Loyauté non garantie hors environnement contrôlé</div>
+            <div class="line"></div>
+            <div class="line">⚠ RISQUES :</div>
+            <div class="line">- Déclencheurs inconnus</div>
+            <div class="line">- Loyauté incertaine</div>
 
-    <div class="line"></div>
-    <div class="line">-- NOTE INTERNE (NON OFFICIELLE) : --</div>
-    <div class="line">“Santoro est mort sur le terrain.</div>
-    <div class="line">Ce qui est revenu… n’est plus tout à fait le même homme.”</div>
+            <div class="line"></div>
+            <div class="line glitch">NOTE :</div>
+            <div class="line glitch">“Ce qui est revenu…</div>
+            <div class="line glitch">n’est plus le même homme.”</div>
+        </div>
+
+    </div>
     `;
 }
 
