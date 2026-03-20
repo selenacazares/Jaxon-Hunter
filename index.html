@@ -138,16 +138,29 @@ async function bootSequence() {
     await typeLine("> INITIALISATION...");
     await typeLine("> CONNEXION AU SERVEUR...");
     await typeLine("> CHIFFREMENT VALIDÉ");
-    await typeLine("> CHARGEMENT A 07%");
-    await typeLine("> CHARGEMENT A 23%");
-    await typeLine("> CHARGEMENT A 54%");
-    await typeLine("> CHARGEMENT A 89%");
+    await typeLine("> CHARGEMENT....07%");
+    await typeLine("> CHARGEMENT....23%");
+    await typeLine("> CHARGEMENT....54%");
+    await typeLine("> CHARGEMENT....89%");
     await typeLine("> CHARGEMENT TERMINÉ");
     await typeLine("> ACCÈS AUTORISÉ");
     await typeLine("> ------------------------------------------");
     await typeLine("> BIENVENUE, OPÉRATEUR ");
     await typeLine("> ------------------------------------------");
     await typeLine("");
+    showMenu();
+}
+    
+async function showMainMenu() {
+    clearTerminal();
+
+    await typeLine("SAN ANDREAS SECURITY (SAS)");
+    await typeLine("DÉPARTEMENT DES OPÉRATIONS SPÉCIALES");
+    await typeLine("------------------------------------------");
+    await typeLine("Veuillez sélectionner un dossier");
+    await typeLine("------------------------------------------");
+    await typeLine("");
+
     showMenu();
 }
 
@@ -159,7 +172,7 @@ function showMenu() {
         <span onclick="loadSection('identite')">[1] FENRIR - DOSSIER PERSONNEL </span>
         <span onclick="loadSection('historique')">[2] GARM - DOSSIER PERSONNEL</span>
         <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUE</span>
-        <span onclick="loadSection('classified')">[4] DOSSIERS CLASSIFIÉS</span>
+        <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS - SECRET DEFENSE</span>
     `;
 
     terminal.appendChild(menu);
@@ -179,7 +192,7 @@ async function loadSection(section) {
         const text = document.createElement("div");
 
         text.innerHTML = `
-        <div class="line">DOSSIER INDIVIDUEL – FENRIR </div>
+        <div class="line">DOSSIER INDIVIDUEL – GARM </div>
         <div class="line">------------------------------------------</div>
         <div class="line"></div>
         <div class="line">Nom : HUNTER</div>
@@ -211,7 +224,7 @@ async function loadSection(section) {
         <div class="line"></div>
         <div class="line">Nom : VEGA</div>
         <div class="line">Prénom : SANTORO</div>
-        <div class="line">Alias : GARM</div>
+        <div class="line">Alias : FENRIR</div>
         <div class="line">Statut : ACTIF (SAS)</div>
         <div class="line">Ancien statut : DÉCÉDÉ AU COMBAT (Statut annulé)</div>
         <div class="line">Liens: Jaxon Hunter (Frère)</div>
@@ -242,20 +255,59 @@ async function loadSection(section) {
     }
 
     if (section === "classified") {
-        await typeLine("> NIVEAU OMEGA REQUIS");
-        await typeLine("> ACCÈS FORCÉ...");
-        await typeLine("");
-        await typeLine("SANTORO : RÉAPPARITION CONFIRMÉE");
-        await typeLine("");
-        await typeLine("“On rentre ensemble… ou pas du tout.”");
-        await typeLine("");
-        await typeLine("SUJET LIÉ : FENRIR");
+    await typeLine("> NIVEAU DE SÉCURITÉ : OMEGA");
+    await typeLine("> AUTHENTIFICATION REQUISE");
+    await typeLine("");
 
-        const glitch = document.createElement("div");
-        glitch.textContent = "████████████████████";
-        glitch.classList.add("line", "glitch");
-        terminal.appendChild(glitch);
-    }
+    await typeLine("> ENTER PASSWORD :");
+
+    const input = document.createElement("input");
+    input.type = "password";
+    input.style.background = "black";
+    input.style.color = "#00ff9c";
+    input.style.border = "1px solid #00ff9c";
+    input.style.fontFamily = "Courier New";
+    input.style.padding = "5px";
+    input.style.marginTop = "10px";
+
+    terminal.appendChild(input);
+    input.focus();
+
+    input.addEventListener("keydown", async function(e) {
+        if (e.key === "Enter") {
+
+            const password = input.value;
+
+            if (password === "07235489") {
+
+                clearTerminal();
+
+                await typeLine("> ACCÈS AUTORISÉ");
+                await typeLine("> DÉCRYPTAGE EN COURS...");
+                await typeLine("");
+
+                await typeLine("SANTORO : RÉAPPARITION CONFIRMÉE");
+                await typeLine("");
+                await typeLine("“On rentre ensemble… ou pas du tout.”");
+                await typeLine("");
+                await typeLine("SUJET LIÉ : FENRIR");
+
+                const glitch = document.createElement("div");
+                glitch.textContent = "████████████████████████";
+                glitch.classList.add("line", "glitch");
+                terminal.appendChild(glitch);
+
+            } else {
+
+                await typeLine("");
+                await typeLine("> ACCÈS REFUSÉ", 10);
+                await typeLine("> TENTATIVE ENREGISTRÉE", 10);
+
+                input.value = "";
+            }
+        }
+    });
+}
 
     await typeLine("");
     const back = document.createElement("div");
@@ -265,7 +317,8 @@ back.style.cursor = "pointer";
 
 back.onclick = () => {
     clearTerminal();
-    showMenu();
+    showMainMenu();
+    await typeLine("> RETOUR AU MENU...");
 };
 
 terminal.appendChild(back);
