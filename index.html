@@ -144,7 +144,6 @@ async function bootSequence() {
     await typeLine("> ACCÈS AUTORISÉ");
     await typeLine("> BIENVENUE, OPÉRATEUR ");
     await typeLine("");
-    await typeLine("> CHARGEMENT DU DOSSIER : GARM");
     showMenu();
 }
 
@@ -153,8 +152,8 @@ function showMenu() {
     menu.classList.add("menu");
 
     menu.innerHTML = `
-        <span onclick="loadSection('identite')">[1] IDENTITÉ</span>
-        <span onclick="loadSection('historique')">[2] BACKGROUND</span>
+        <span onclick="loadSection('identite')">[1] FENRIR - DOSSIER PERSONNEL </span>
+        <span onclick="loadSection('historique')">[2] GARM - DOSSIER PERSONNEL</span>
         <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUE</span>
         <span onclick="loadSection('classified')">[4] DOSSIERS CLASSIFIÉS</span>
     `;
@@ -176,7 +175,7 @@ async function loadSection(section) {
         const text = document.createElement("div");
 
         text.innerHTML = `
-        <div class="line">DOSSIER INDIVIDUEL – DOSSIER CONFIDENTIEL </div>
+        <div class="line">DOSSIER INDIVIDUEL – FENRIR </div>
         <div class="line">------------------------------------------</div>
         <div class="line"></div>
         <div class="line">Nom : HUNTER</div>
@@ -196,16 +195,32 @@ async function loadSection(section) {
         terminal.appendChild(container);
     }
 
-    if (section === "Background") {
-        await typeLine("Ancien opérateur d’une unité spécialisée.");
-        await typeLine("Opérations extérieures classifiées.");
-        await typeLine("");
-        await typeLine("Compétences :");
-        await typeLine("- Commandement");
-        await typeLine("- Gestion du stress");
-        await typeLine("- Cohésion d’escouade");
-    }
+    if (section === "historique") {
+        const container = document.createElement("div");
+        container.classList.add("identity-container");
 
+        const text = document.createElement("div");
+
+        text.innerHTML = `
+        <div class="line">DOSSIER INDIVIDUEL – GARM </div>
+        <div class="line">------------------------------------------</div>
+        <div class="line"></div>
+        <div class="line">Nom : VEGA</div>
+        <div class="line">Prénom : SANTORO</div>
+        <div class="line">Alias : GARM</div>
+        <div class="line">Statut : ACTIF (SAS)</div>
+        <div class="line">Ancien statut : DÉCÉDÉ AU COMBAT (Statut annulé)</div>
+        <div class="line">Liens: Jaxon Hunter (Frère)</div>
+        `;
+
+        const photo = document.createElement("div");
+        photo.classList.add("identity-photo");
+        photo.innerHTML = `<img src="https://i.goopics.net/8z6var.jpg>`;
+
+        container.appendChild(text);
+        container.appendChild(photo);
+        terminal.appendChild(container);
+    }
     if (section === "incident") {
         await typeLine("[OPÉRATION : CLASSIFIÉE]");
         await typeLine("Unité sous feu ennemi.");
@@ -213,7 +228,7 @@ async function loadSection(section) {
         await typeLine("Statut : MORT AU COMBAT");
     }
 
-    if (section === "RAPPORTS PSYCHOLOGIQUES") {
+    if (section === "psy") {
         await typeLine("Changement comportemental détecté :");
         await typeLine("- Discipline réduite");
         await typeLine("- Engagement accru");
@@ -222,7 +237,7 @@ async function loadSection(section) {
         await typeLine("Efficacité maintenue.");
     }
 
-    if (section === "DOSSIER CLASSIFIE - ACCES RECQUIS") {
+    if (section === "classified") {
         await typeLine("> NIVEAU OMEGA REQUIS");
         await typeLine("> ACCÈS FORCÉ...");
         await typeLine("");
