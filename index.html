@@ -152,6 +152,8 @@ function showMenu() {
     menu.classList.add("menu");
 
     menu.innerHTML = `
+        await typeLine("> BIENVENUE, OPÉRATEUR ");
+        await typeLine("> ------------------------------------------");
         <span onclick="loadSection('identite')">[1] FENRIR - DOSSIER PERSONNEL </span>
         <span onclick="loadSection('historique')">[2] GARM - DOSSIER PERSONNEL</span>
         <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUE</span>
@@ -188,7 +190,7 @@ async function loadSection(section) {
 
         const photo = document.createElement("div");
         photo.classList.add("identity-photo");
-        photo.innerHTML = `<img src="https://i.goopics.net/ltop6d.jpg>`;
+        photo.innerHTML = `<img src="https://i.goopics.net/ltop6d.jpg">`;
 
         container.appendChild(text);
         container.appendChild(photo);
@@ -215,7 +217,7 @@ async function loadSection(section) {
 
         const photo = document.createElement("div");
         photo.classList.add("identity-photo");
-        photo.innerHTML = `<img src="https://i.goopics.net/8z6var.jpg>`;
+        photo.innerHTML = `<img src="https://i.goopics.net/8z6var.jpg">`;
 
         container.appendChild(text);
         container.appendChild(photo);
