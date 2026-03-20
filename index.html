@@ -152,10 +152,9 @@ function showMenu() {
 
     menu.innerHTML = `
         <span onclick="loadSection('identite')">[1] IDENTITÉ</span>
-        <span onclick="loadSection('historique')">[2] HISTORIQUE MILITAIRE</span>
-        <span onclick="loadSection('incident')">[3] INCIDENT MAJEUR</span>
-        <span onclick="loadSection('psy')">[4] IMPACT PSYCHOLOGIQUE</span>
-        <span onclick="loadSection('classified')">[5] DOSSIERS CLASSIFIÉS</span>
+        <span onclick="loadSection('historique')">[2] BACKGROUND</span>
+        <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUE</span>
+        <span onclick="loadSection('classified')">[4] DOSSIERS CLASSIFIÉS</span>
     `;
 
     terminal.appendChild(menu);
@@ -175,7 +174,7 @@ async function loadSection(section) {
         const text = document.createElement("div");
 
         text.innerHTML = `
-        <div class="line">DOSSIER INDIVIDUEL – CONFIDENTIEL DÉFENSE</div>
+        <div class="line">DOSSIER INDIVIDUEL – DOSSIER CONFIDENTIEL </div>
         <div class="line">------------------------------------------</div>
         <div class="line"></div>
         <div class="line">Nom : HUNTER</div>
@@ -183,18 +182,19 @@ async function loadSection(section) {
         <div class="line">Alias : GARM</div>
         <div class="line">Statut : ACTIF (SAS)</div>
         <div class="line">Ancien statut : SORTIE VOLONTAIRE</div>
+        <div class="line">Liens: Santoro Vega (Frère)</div>
         `;
 
         const photo = document.createElement("div");
         photo.classList.add("identity-photo");
-        photo.innerHTML = `<img src="https://via.placeholder.com/180x220">`;
+        photo.innerHTML = `<img src="https://i.goopics.net/ltop6d.jpg>`;
 
         container.appendChild(text);
         container.appendChild(photo);
         terminal.appendChild(container);
     }
 
-    if (section === "historique") {
+    if (section === "Background") {
         await typeLine("Ancien opérateur d’une unité spécialisée.");
         await typeLine("Opérations extérieures classifiées.");
         await typeLine("");
@@ -211,7 +211,7 @@ async function loadSection(section) {
         await typeLine("Statut : MORT AU COMBAT");
     }
 
-    if (section === "psy") {
+    if (section === "RAPPORTS PSYCHOLOGIQUES") {
         await typeLine("Changement comportemental détecté :");
         await typeLine("- Discipline réduite");
         await typeLine("- Engagement accru");
@@ -220,7 +220,7 @@ async function loadSection(section) {
         await typeLine("Efficacité maintenue.");
     }
 
-    if (section === "classified") {
+    if (section === "DOSSIER CLASSIFIE - ACCES RECQUIS") {
         await typeLine("> NIVEAU OMEGA REQUIS");
         await typeLine("> ACCÈS FORCÉ...");
         await typeLine("");
@@ -237,7 +237,17 @@ async function loadSection(section) {
     }
 
     await typeLine("");
-    await typeLine("> RETOUR MENU");
+    const back = document.createElement("div");
+back.classList.add("line");
+back.textContent = "> RETOUR MENU";
+back.style.cursor = "pointer";
+
+back.onclick = () => {
+    clearTerminal();
+    showMenu();
+};
+
+terminal.appendChild(back);
     showMenu();
 }
 
