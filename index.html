@@ -21,7 +21,7 @@ body {
 .main-title {
     font-size: 28px;
     font-weight: bold;
-    text-shadow: 0 0 10px #00ff9c;
+    text-shadow: 0 0 5px #00ff9c;
 }
 
 .section-title {
@@ -140,10 +140,10 @@ function menu() {
     menu.classList.add("menu");
 
     menu.innerHTML = `
-        <span onclick="loadSection('garm')">[1] GARM</span>
-        <span onclick="loadSection('fenrir')">[2] FENRIR</span>
-        <span onclick="loadSection('psy')">[3] RAPPORTS PSY</span>
-        <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS</span>
+        <span onclick="loadSection('garm')">[1] DOSSIER PERSONNEL - GARM</span>
+        <span onclick="loadSection('fenrir')">[2] DOSSIER PERSONNEL - FENRIR</span>
+        <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUES</span>
+        <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS (Accès sécurisé)</span>
     `;
 
     terminal.appendChild(menu);
