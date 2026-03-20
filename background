@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>SAS Secure Access</title>
+
+<style>
+body {
+    background-color: black;
+    color: #00ff9c;
+    font-family: "Courier New", monospace;
+    margin: 0;
+    padding: 20px;
+}
+
+#terminal {
+    max-width: 900px;
+    margin: auto;
+}
+
+.line {
+    margin: 5px 0;
+}
+
+.menu {
+    margin-top: 20px;
+}
+
+.menu span {
+    display: block;
+    cursor: pointer;
+}
+
+.menu span:hover {
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+.glitch {
+    color: red;
+}
+</style>
+</head>
+
+<body>
+
+<div id="terminal"></div>
+
+<script>
+const terminal = document.getElementById("terminal");
+
+function typeLine(text, delay = 20) {
+    return new Promise(resolve => {
+        const line = document.createElement("div");
+        line.classList.add("line");
+        terminal.appendChild(line);
+
+        let i = 0;
+        function typing() {
+            if (i < text.length) {
+                line.textContent += text.charAt(i);
+                i++;
+                setTimeout(typing, delay);
+            } else {
+                resolve();
+            }
+        }
+        typing();
+    });
+}
+
+async function bootSequence() {
+    await typeLine("SAN ANDREAS SECURITY");
+    await typeLine("SECURE ACCESS NODE v3.7");
+    await typeLine("");
+    await typeLine("> INITIALIZING...");
+    await typeLine("> CONNECTING...");
+    await typeLine("> ENCRYPTION VERIFIED");
+    await typeLine("");
+    await typeLine("> ACCESS GRANTED");
+    await typeLine("> WELCOME, OFFICER");
+    await typeLine("");
+    await typeLine("> LOADING FILE: GARM");
+    showMenu();
+}
+
+function showMenu() {
+    const menu = document.createElement("div");
+    menu.classList.add("menu");
+
+    menu.innerHTML = `
+        <span onclick="loadSection('overview')">[1] SUBJECT OVERVIEW</span>
+        <span onclick="loadSection('history')">[2] MILITARY HISTORY</span>
+        <span onclick="loadSection('incident')">[3] INCIDENT LOG</span>
+        <span onclick="loadSection('psy')">[4] PSYCHOLOGICAL ANALYSIS</span>
+        <span onclick="loadSection('classified')">[5] CLASSIFIED FILES</span>
+    `;
+
+    terminal.appendChild(menu);
+}
+
+function clearTerminal() {
+    terminal.innerHTML = "";
+}
+
+async function loadSection(section) {
+    clearTerminal();
+
+    if (section === "overview") {
+        await typeLine("NAME: HUNTER, JAXON");
+        await typeLine("CALLSIGN: GARM");
+        await typeLine("STATUS: ACTIVE – SAS");
+        await typeLine("THREAT LEVEL: CONTROLLED");
+    }
+
+    if (section === "history") {
+        await typeLine("Former operative – classified unit");
+        await typeLine("Leadership: CONFIRMED");
+        await typeLine("Stress resistance: HIGH");
+        await typeLine("Squad cohesion: EXCELLENT");
+    }
+
+    if (section === "incident") {
+        await typeLine("[OPERATION: ███████]");
+        await typeLine("Unit under heavy fire");
+        await typeLine("SANTORO: Stayed behind");
+        await typeLine("STATUS: KIA");
+        await typeLine("");
+        await typeLine("> ADDITIONAL DATA DETECTED...");
+    }
+
+    if (section === "psy") {
+        await typeLine("Behavior shift detected");
+        await typeLine("- Increased aggression");
+        await typeLine("- Selective obedience");
+        await typeLine("");
+        await typeLine("Efficiency: +17%");
+    }
+
+    if (section === "classified") {
+        await typeLine("> ACCESS LEVEL: OMEGA REQUIRED");
+        await typeLine("> OVERRIDE ACCEPTED");
+        await typeLine("");
+        await typeLine("SANTORO: REAPPEARANCE CONFIRMED");
+        await typeLine("First recognition: HUNTER");
+        await typeLine("");
+        await typeLine("“On rentre ensemble… ou pas du tout.”");
+        await typeLine("");
+        await typeLine("LINKED SUBJECT: FENRIR", 30);
+
+        const glitch = document.createElement("div");
+        glitch.textContent = "████████████████████";
+        glitch.classList.add("glitch");
+        terminal.appendChild(glitch);
+    }
+
+    await typeLine("");
+    await typeLine("> RETURN TO MENU");
+    showMenu();
+}
+
+bootSequence();
+</script>
+
+</body>
+</html>
