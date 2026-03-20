@@ -13,20 +13,17 @@ body {
     font-size: 18px;
 }
 
-/* texte normal */
 .line {
     margin: 6px 0;
-    color: #00ff9c;
 }
 
-/* titre principal */
+/* TITRES */
 .main-title {
     font-size: 28px;
     font-weight: bold;
     text-shadow: 0 0 10px #00ff9c;
 }
 
-/* titres sections */
 .section-title {
     font-size: 20px;
     font-weight: bold;
@@ -34,12 +31,12 @@ body {
     margin-top: 15px;
 }
 
-/* labels */
+/* LABELS */
 .label {
     font-weight: bold;
 }
 
-/* menu */
+/* MENU */
 .menu span {
     display: block;
     cursor: pointer;
@@ -49,7 +46,7 @@ body {
     color: white;
 }
 
-/* fiche */
+/* LAYOUT */
 .identity-container {
     display: flex;
     gap: 30px;
@@ -62,6 +59,7 @@ body {
     border: 2px solid #00ff9c;
     box-shadow: 0 0 6px #00ff9c;
 }
+
 .identity-photo img {
     width: 100%;
     height: 100%;
@@ -69,10 +67,11 @@ body {
     filter: grayscale(100%);
 }
 
-/* glitch */
+/* GLITCH */
 .glitch {
     animation: glitch 0.3s infinite;
 }
+
 @keyframes glitch {
     0% { transform: translate(0); }
     20% { transform: translate(-1px,1px); }
@@ -181,14 +180,27 @@ async function loadSection(section) {
 
         <div class="line section-title">HISTORIQUE MILITAIRE</div>
         <div class="line">════════════════════════════</div>
-        <div class="line">Ancien opérateur d’une unité spécialisée.</div>
-        <div class="line">Opérations extérieures classifiées.</div>
-        <div class="line">Le sujet s’est imposé comme élément central grâce à :</div>
-        <div class="line">- Capacités de commandement</div>
-        <div class="line">- Gestion du stress en situation critique</div>
-        <div class="line">- Cohésion avec son escouade</div>
-        <div class="line">Maintient ses hommes opérationnels</div>
-        <div class="line">dans des conditions extrêmes.</div>
+
+        <div class="line">Ancien opérateur d’une unité spécialisée engagée dans des opérations extérieures classifiées.</div>
+        <div class="line">Le sujet s’est rapidement imposé comme élément central de son unité grâce à :</div>
+        <div class="line">- ses capacités de commandement</div>
+        <div class="line">- sa gestion du stress en situation critique</div>
+        <div class="line">- sa cohésion avec son escouade</div>
+        <div class="line">Reconnu pour maintenir ses hommes opérationnels dans des conditions extrêmes.</div>
+
+        <div class="line section-title">INCIDENT MAJEUR</div>
+        <div class="line">════════════════════════════</div>
+
+        <div class="line">Lors d’une mission à haut risque, l’unité du sujet a été prise sous feu ennemi.</div>
+        <div class="line">➡️ SANTORO s’est sacrifié pour couvrir le repli.</div>
+        <div class="line">Conséquences :</div>
+        <div class="line">- Disparition de l’opérateur</div>
+        <div class="line">- Déclaré mort au combat</div>
+
+        <div class="line section-title">ÉVÉNEMENT EXCEPTIONNEL</div>
+        <div class="line">════════════════════════════</div>
+
+        <div class="line">Réapparition confirmée de SANTORO.</div>
         `;
     }
 
@@ -211,9 +223,17 @@ async function loadSection(section) {
             </div>
         </div>
 
-        <div class="line section-title">STATUT</div>
+        <div class="line section-title">HISTORIQUE</div>
         <div class="line">════════════════════════════</div>
-        <div class="line">Sujet instable mais opérationnel.</div>
+
+        <div class="line">Ancien membre d’une unité spécialisée engagée dans des opérations extérieures à haut risque.</div>
+        <div class="line">Compétences : infiltration, combat rapproché, adaptation.</div>
+
+        <div class="line section-title">STATUT EXCEPTIONNEL</div>
+        <div class="line">════════════════════════════</div>
+
+        <div class="line">Réapparition après déclaration de décès.</div>
+        <div class="line">État psychologique instable.</div>
         `;
     }
 
@@ -255,10 +275,7 @@ async function loadSection(section) {
                     `;
 
                 } else {
-
-                    await typeLine("> AUTHENTIFICATION ÉCHOUÉE");
-                    await typeLine("> TENTATIVE ENREGISTRÉE");
-
+                    await typeLine("> ACCÈS REFUSÉ");
                     input.value = "";
                 }
             }
