@@ -134,15 +134,19 @@ function typeLine(text, delay = 20) {
 async function bootSequence() {
     await typeLine("SAN ANDREAS SECURITY (SAS)");
     await typeLine("DÉPARTEMENT DES OPÉRATIONS SPÉCIALES");
-    await typeLine("");
+    await typeLine("> ------------------------------------------");
     await typeLine("> INITIALISATION...");
     await typeLine("> CONNEXION AU SERVEUR...");
     await typeLine("> CHIFFREMENT VALIDÉ");
-    await typeLine("> ...");
-    await typeLine("> ...");
-    await typeLine("");
+    await typeLine("> CHARGEMENT A 07%");
+    await typeLine("> CHARGEMENT A 23%");
+    await typeLine("> CHARGEMENT A 54%");
+    await typeLine("> CHARGEMENT A 89%");
+    await typeLine("> CHARGEMENT TERMINÉ");
     await typeLine("> ACCÈS AUTORISÉ");
+    await typeLine("> ------------------------------------------");
     await typeLine("> BIENVENUE, OPÉRATEUR ");
+    await typeLine("> ------------------------------------------");
     await typeLine("");
     showMenu();
 }
@@ -152,8 +156,6 @@ function showMenu() {
     menu.classList.add("menu");
 
     menu.innerHTML = `
-        await typeLine("> BIENVENUE, OPÉRATEUR ");
-        await typeLine("> ------------------------------------------");
         <span onclick="loadSection('identite')">[1] FENRIR - DOSSIER PERSONNEL </span>
         <span onclick="loadSection('historique')">[2] GARM - DOSSIER PERSONNEL</span>
         <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUE</span>
