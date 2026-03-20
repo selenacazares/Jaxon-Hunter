@@ -127,6 +127,29 @@ function clearTerminal() {
     terminal.innerHTML = "";
 }
 
+async function bootSequence() {
+    clearTerminal();
+
+    await typeLine("SAN ANDREAS SECURITY (SAS)");
+    await typeLine("DÉPARTEMENT DES OPÉRATIONS SPÉCIALES");
+    await typeLine("> ------------------------------------------");
+    await typeLine("> INITIALISATION...");
+    await typeLine("> CONNEXION AU SERVEUR...");
+    await typeLine("> CHIFFREMENT VALIDÉ");
+    await typeLine("> CHARGEMENT....07%");
+    await typeLine("> CHARGEMENT....23%");
+    await typeLine("> CHARGEMENT....54%");
+    await typeLine("> CHARGEMENT....89%");
+    await typeLine("> CHARGEMENT TERMINÉ");
+    await typeLine("> ACCÈS AUTORISÉ");
+    await typeLine("> ------------------------------------------");
+    await typeLine("> BIENVENUE, OPÉRATEUR");
+    await typeLine("> ------------------------------------------");
+    await typeLine("");
+
+    showMainMenu();
+}
+    
 /* MENU PRINCIPAL */
 async function showMainMenu() {
     clearTerminal();
