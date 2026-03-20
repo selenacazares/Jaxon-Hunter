@@ -112,7 +112,23 @@ async function bootSequence() {
     await typeLine("> BIENVENUE, OPÉRATEUR");
     await typeLine("");
 
-    showMainMenu();
+    showMenu();
+}
+
+/* MENU */
+async function showMenu() {
+
+    const menu = document.createElement("div");
+    menu.classList.add("menu");
+
+    menu.innerHTML = `
+        <span onclick="loadSection('garm')">[1] GARM - DOSSIER PERSONNEL</span>
+        <span onclick="loadSection('fenrir')">[2] FENRIR - DOSSIER PERSONNEL</span>
+        <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUES</span>
+        <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS</span>
+    `;
+
+    terminal.appendChild(menu);
 }
 
 /* MENU */
