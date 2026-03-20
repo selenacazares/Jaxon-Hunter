@@ -19,8 +19,6 @@ body {
 body::after {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
@@ -40,7 +38,7 @@ body::after {
     position: absolute;
     width: 100%;
     height: 2px;
-    background: rgba(0, 255, 156, 0.15);
+    background: rgba(0,255,156,0.15);
     animation: scan 6s linear infinite;
 }
 
@@ -52,10 +50,6 @@ body::after {
 .line {
     margin: 6px 0;
     text-shadow: 0 0 6px #00ff9c;
-}
-
-.menu {
-    margin-top: 20px;
 }
 
 .menu span {
@@ -95,10 +89,10 @@ body::after {
 
 @keyframes glitch {
     0% { transform: translate(0); }
-    20% { transform: translate(-1px, 1px); }
-    40% { transform: translate(1px, -1px); }
-    60% { transform: translate(-1px, 0); }
-    80% { transform: translate(1px, 1px); }
+    20% { transform: translate(-1px,1px); }
+    40% { transform: translate(1px,-1px); }
+    60% { transform: translate(-1px,0); }
+    80% { transform: translate(1px,1px); }
     100% { transform: translate(0); }
 }
 </style>
@@ -123,219 +117,140 @@ function typeLine(text, delay = 20) {
                 line.textContent += text.charAt(i);
                 i++;
                 setTimeout(typing, delay);
-            } else {
-                resolve();
-            }
+            } else resolve();
         }
         typing();
     });
-}
-
-async function bootSequence() {
-    await typeLine("SAN ANDREAS SECURITY (SAS)");
-    await typeLine("DÉPARTEMENT DES OPÉRATIONS SPÉCIALES");
-    await typeLine("> ------------------------------------------");
-    await typeLine("> INITIALISATION...");
-    await typeLine("> CONNEXION AU SERVEUR...");
-    await typeLine("> CHIFFREMENT VALIDÉ");
-    await typeLine("> CHARGEMENT....07%");
-    await typeLine("> CHARGEMENT....23%");
-    await typeLine("> CHARGEMENT....54%");
-    await typeLine("> CHARGEMENT....89%");
-    await typeLine("> CHARGEMENT TERMINÉ");
-    await typeLine("> ACCÈS AUTORISÉ");
-    await typeLine("> ------------------------------------------");
-    await typeLine("> BIENVENUE, OPÉRATEUR ");
-    await typeLine("> ------------------------------------------");
-    await typeLine("");
-    showMenu();
-}
-    
-async function showMainMenu() {
-    clearTerminal();
-
-    await typeLine("SAN ANDREAS SECURITY (SAS)");
-    await typeLine("DÉPARTEMENT DES OPÉRATIONS SPÉCIALES");
-    await typeLine("------------------------------------------");
-    await typeLine("Veuillez sélectionner un dossier");
-    await typeLine("------------------------------------------");
-    await typeLine("");
-
-    showMenu();
-}
-
-function showMenu() {
-    const menu = document.createElement("div");
-    menu.classList.add("menu");
-
-    menu.innerHTML = `
-        <span onclick="loadSection('identite')">[1] FENRIR - DOSSIER PERSONNEL </span>
-        <span onclick="loadSection('historique')">[2] GARM - DOSSIER PERSONNEL</span>
-        <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUE</span>
-        <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS - SECRET DEFENSE</span>
-    `;
-
-    terminal.appendChild(menu);
 }
 
 function clearTerminal() {
     terminal.innerHTML = "";
 }
 
+/* MENU PRINCIPAL */
+async function showMainMenu() {
+    clearTerminal();
+
+    await typeLine("SAN ANDREAS SECURITY (SAS)");
+    await typeLine("DÉPARTEMENT DES OPÉRATIONS SPÉCIALES");
+    await typeLine("> ------------------------------------------");
+    await typeLine("Veuillez sélectionner un dossier");
+    await typeLine("> ------------------------------------------");
+    await typeLine("");
+
+    const menu = document.createElement("div");
+    menu.classList.add("menu");
+
+    menu.innerHTML = `
+        <span onclick="loadSection('garm')">[1] GARM - DOSSIER PERSONNEL</span>
+        <span onclick="loadSection('fenrir')">[2] FENRIR - DOSSIER PERSONNEL</span>
+        <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUES</span>
+        <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS</span>
+    `;
+
+    terminal.appendChild(menu);
+}
+
+/* SECTIONS */
 async function loadSection(section) {
     clearTerminal();
 
-    if (section === "identite") {
-        const container = document.createElement("div");
-        container.classList.add("identity-container");
-
-        const text = document.createElement("div");
-
-        text.innerHTML = `
-        <div class="line">DOSSIER INDIVIDUEL – GARM </div>
-        <div class="line">------------------------------------------</div>
-        <div class="line"></div>
-        <div class="line">Nom : HUNTER</div>
-        <div class="line">Prénom : JAXON</div>
-        <div class="line">Alias : GARM</div>
-        <div class="line">Statut : ACTIF (SAS)</div>
-        <div class="line">Ancien statut : SORTIE VOLONTAIRE</div>
-        <div class="line">Liens: Santoro Vega (Frère)</div>
-        `;
-
-        const photo = document.createElement("div");
-        photo.classList.add("identity-photo");
-        photo.innerHTML = `<img src="https://i.goopics.net/ltop6d.jpg">`;
-
-        container.appendChild(text);
-        container.appendChild(photo);
-        terminal.appendChild(container);
+    if (section === "garm") {
+        terminal.innerHTML = `
+        <div class="identity-container">
+            <div>
+                <div class="line">DOSSIER – GARM</div>
+                <div class="line">------------------------------------------</div>
+                <div class="line">Nom : HUNTER</div>
+                <div class="line">Prénom : JAXON</div>
+                <div class="line">Alias : GARM</div>
+                <div class="line">Statut : ACTIF (SAS)</div>
+                <div class="line">Ancien statut : SORTIE VOLONTAIRE</div>
+                <div class="line">Lien : Santoro Vega (Frère)</div>
+            </div>
+            <div class="identity-photo">
+                <img src="https://i.goopics.net/ltop6d.jpg">
+            </div>
+        </div>`;
     }
 
-    if (section === "historique") {
-        const container = document.createElement("div");
-        container.classList.add("identity-container");
-
-        const text = document.createElement("div");
-
-        text.innerHTML = `
-        <div class="line">DOSSIER INDIVIDUEL – GARM </div>
-        <div class="line">------------------------------------------</div>
-        <div class="line"></div>
-        <div class="line">Nom : VEGA</div>
-        <div class="line">Prénom : SANTORO</div>
-        <div class="line">Alias : FENRIR</div>
-        <div class="line">Statut : ACTIF (SAS)</div>
-        <div class="line">Ancien statut : DÉCÉDÉ AU COMBAT (Statut annulé)</div>
-        <div class="line">Liens: Jaxon Hunter (Frère)</div>
-        `;
-
-        const photo = document.createElement("div");
-        photo.classList.add("identity-photo");
-        photo.innerHTML = `<img src="https://i.goopics.net/8z6var.jpg">`;
-
-        container.appendChild(text);
-        container.appendChild(photo);
-        terminal.appendChild(container);
-    }
-    if (section === "incident") {
-        await typeLine("[OPÉRATION : CLASSIFIÉE]");
-        await typeLine("Unité sous feu ennemi.");
-        await typeLine("SANTORO : Sacrifice pour repli.");
-        await typeLine("Statut : MORT AU COMBAT");
+    if (section === "fenrir") {
+        terminal.innerHTML = `
+        <div class="identity-container">
+            <div>
+                <div class="line">DOSSIER – FENRIR</div>
+                <div class="line">------------------------------------------</div>
+                <div class="line">Nom : VEGA</div>
+                <div class="line">Prénom : SANTORO</div>
+                <div class="line">Alias : FENRIR</div>
+                <div class="line">Statut : ACTIF (SAS)</div>
+                <div class="line">Ancien statut : DÉCÉDÉ (ANNULÉ)</div>
+                <div class="line">Lien : Jaxon Hunter (Frère)</div>
+            </div>
+            <div class="identity-photo">
+                <img src="https://i.goopics.net/8z6var.jpg">
+            </div>
+        </div>`;
     }
 
     if (section === "psy") {
-        await typeLine("Changement comportemental détecté :");
-        await typeLine("- Discipline réduite");
-        await typeLine("- Engagement accru");
+        await typeLine("RAPPORT PSYCHOLOGIQUE :");
+        await typeLine("- Loyauté extrême");
         await typeLine("- Obéissance sélective");
-        await typeLine("");
-        await typeLine("Efficacité maintenue.");
+        await typeLine("- Forte résistance mentale");
     }
 
     if (section === "classified") {
-    await typeLine("> NIVEAU DE SÉCURITÉ : OMEGA");
-    await typeLine("> AUTHENTIFICATION REQUISE");
-    await typeLine("");
+        await typeLine("> NIVEAU OMEGA");
+        await typeLine("> AUTHENTIFICATION REQUISE");
+        await typeLine("");
 
-    await typeLine("> ENTER PASSWORD :");
+        const input = document.createElement("input");
+        input.type = "password";
+        input.style.background = "black";
+        input.style.color = "#00ff9c";
+        input.style.border = "1px solid #00ff9c";
 
-    const input = document.createElement("input");
-    input.type = "password";
-    input.style.background = "black";
-    input.style.color = "#00ff9c";
-    input.style.border = "1px solid #00ff9c";
-    input.style.fontFamily = "Courier New";
-    input.style.padding = "5px";
-    input.style.marginTop = "10px";
+        terminal.appendChild(input);
+        input.focus();
 
-    terminal.appendChild(input);
-    input.focus();
+        input.addEventListener("keydown", async (e) => {
+            if (e.key === "Enter") {
+                if (input.value === "07235489") {
 
-    input.addEventListener("keydown", async function(e) {
-        if (e.key === "Enter") {
+                    clearTerminal();
 
-            const password = input.value;
+                    await typeLine("> ACCÈS AUTORISÉ");
+                    await typeLine("“On rentre ensemble… ou pas du tout.”");
 
-            if (password === "07235489") {
+                    const glitch = document.createElement("div");
+                    glitch.textContent = "██████████████";
+                    glitch.classList.add("line","glitch");
+                    terminal.appendChild(glitch);
 
-                clearTerminal();
-
-                await typeLine("> ACCÈS AUTORISÉ");
-                await typeLine("> DÉCRYPTAGE EN COURS...");
-                await typeLine("");
-
-                await typeLine("SANTORO : RÉAPPARITION CONFIRMÉE");
-                await typeLine("");
-                await typeLine("“On rentre ensemble… ou pas du tout.”");
-                await typeLine("");
-                await typeLine("SUJET LIÉ : FENRIR");
-
-                const glitch = document.createElement("div");
-                glitch.textContent = "████████████████████████";
-                glitch.classList.add("line", "glitch");
-                terminal.appendChild(glitch);
-
-            } else {
-
-                await typeLine("");
-                await typeLine("> ACCÈS REFUSÉ", 10);
-                await typeLine("> TENTATIVE ENREGISTRÉE", 10);
-
-                input.value = "";
+                } else {
+                    await typeLine("> ACCÈS REFUSÉ");
+                    input.value = "";
+                }
             }
-        }
-    });
-}
-
-    await typeLine("");
-    const back = document.createElement("div");
-back.classList.add("line");
-back.textContent = "> RETOUR MENU";
-back.style.cursor = "pointer";
-
-back.onclick = () => {
-    clearTerminal();
-    showMainMenu();
-    await typeLine("> RETOUR AU MENU...");
-};
-
-terminal.appendChild(back);
-    showMenu();
-}
-
-/* glitch aléatoire */
-setInterval(() => {
-    if (Math.random() < 0.1) {
-        document.body.style.filter = "brightness(1.5)";
-        setTimeout(() => {
-            document.body.style.filter = "brightness(1)";
-        }, 80);
+        });
     }
-}, 3000);
 
-bootSequence();
+    /* RETOUR MENU */
+    const back = document.createElement("div");
+    back.classList.add("line");
+    back.textContent = "> RETOUR MENU";
+    back.style.cursor = "pointer";
+
+    back.onclick = () => {
+        showMainMenu();
+    };
+
+    terminal.appendChild(back);
+}
+
+/* BOOT */
+showMainMenu();
 </script>
 
 </body>
