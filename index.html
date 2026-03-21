@@ -504,7 +504,15 @@ async function loadSection(section) {
     if (section === "classified") {
         renderHeader("DOSSIERS CONFIDENTIELS");
     
-        await typeLine("> NIVEAU OMEGA");
+        
+        await typeLine("CONNEXION AU SERVEUR - NIVEAU OMEGA")
+        await typeLine("------------------------------------------");
+        await typeLine("> CHARGEMENT....07%");
+        await typeLine("> CHARGEMENT....23%");
+        await typeLine("> CHARGEMENT....54%");
+        await typeLine("> CHARGEMENT....89%");
+        await typeLine("> CHARGEMENT TERMINÉ");
+        await typeLine("------------------------------------------");
         await typeLine("> AUTHENTIFICATION REQUISE");
     
         const input = document.createElement("input");
@@ -594,6 +602,7 @@ async function loadSection(section) {
                 } else {
     
                     await typeLine("");
+                    await typeLine("------------------------------------------");
                     await typeLine("> AUTHENTIFICATION ÉCHOUÉE");
                     await typeLine("> MOT DE PASSE ERRONÉ - VEUILLEZ SAISIR LE MOT DE PASSE");
     
