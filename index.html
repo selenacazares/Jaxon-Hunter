@@ -264,62 +264,56 @@ async function loadSection(section) {
 
     if (section === "garm") {
     terminal.innerHTML = `
+    <div class="identity-container">
+        <div>
+            <div class="line main-title">DOSSIER – GARM</div>
+            <div class="line">════════════════════════════</div>
 
-        <div class="identity-container">
-            <div>
-                <div class="line main-title">DOSSIER – GARM</div>
-                <div class="line">════════════════════════════</div>
-
-                <div class="line"><span class="label">Nom :</span> HUNTER</div>
-                <div class="line"><span class="label">Prénom :</span> JAXON</div>
-                <div class="line"><span class="label">Alias :</span> GARM</div>
-                <div class="line"><span class="label">Statut :</span> ACTIF (SAS)</div>
-                <div class="line"><span class="label">Ancien statut :</span> SORTIE VOLONTAIRE</div>
-                <div class="line"><span class="label">Lien :</span> Santoro Vega (Frère)</div>
-            </div>
-
-            <div class="identity-photo">
-                <img src="https://i.goopics.net/8z6var.jpg">
-            </div>
+            <div class="line"><span class="label">Nom :</span> HUNTER</div>
+            <div class="line"><span class="label">Prénom :</span> JAXON</div>
+            <div class="line"><span class="label">Alias :</span> GARM</div>
+            <div class="line"><span class="label">Statut :</span> ACTIF (SAS)</div>
+            <div class="line"><span class="label">Ancien statut :</span> SORTIE VOLONTAIRE</div>
+            <div class="line"><span class="label">Lien :</span> Santoro Vega (Frère)</div>
         </div>
 
+        <div class="identity-photo">
+            <img src="https://i.goopics.net/ltop6d.jpg">
+        </div>
+    </div>
 
-        <div class="line section-title">HISTORIQUE MILITAIRE</div>
-        <div class="line">════════════════════════════</div>
+    <div class="line section-title">HISTORIQUE MILITAIRE</div>
+    <div class="line">════════════════════════════</div>
 
-        <div class="line">Ancien opérateur d’une unité spécialisée engagée dans des opérations extérieures classifiées.</div>
-        <div class="line">Le sujet s’est rapidement imposé comme élément central grâce à :</div>
-        <div class="line">- Capacités de commandement</div>
-        <div class="line">- Gestion du stress en situation critique</div>
-        <div class="line">- Cohésion avec son escouade</div>
-        <div class="line">Reconnu pour maintenir ses hommes opérationnels dans des conditions extrêmes.</div>
+    <div class="line">Ancien opérateur d’une unité spécialisée engagée dans des opérations extérieures classifiées.</div>
+    <div class="line">Le sujet s’est rapidement imposé comme élément central grâce à :</div>
+    <div class="line">- Capacités de commandement</div>
+    <div class="line">- Gestion du stress en situation critique</div>
+    <div class="line">- Cohésion avec son escouade</div>
+    <div class="line">Reconnu pour maintenir ses hommes opérationnels dans des conditions extrêmes.</div>
 
+    <div class="line section-title">INCIDENT MAJEUR</div>
+    <div class="line">════════════════════════════</div>
 
-        <div class="line section-title">INCIDENT MAJEUR</div>
-        <div class="line">════════════════════════════</div>
+    <div class="line">Lors d’une mission à haut risque, l’unité du sujet a été prise sous feu ennemi.</div>
+    <div class="line">SANTORO : Sacrifice pour couvrir le repli.</div>
 
-        <div class="line">Lors d’une mission à haut risque, l’unité du sujet a été prise sous feu ennemi.</div>
-        <div class="line">SANTORO : Sacrifice pour couvrir le repli.</div>
+    <div class="line"></div>
+    <div class="line"><span class="label">Conséquences :</span></div>
+    <div class="line">- Disparition de l’opérateur</div>
+    <div class="line">- Déclaré mort au combat</div>
 
-        <div class="line"></div>
-        <div class="line"><span class="label">Conséquences :</span></div>
-        <div class="line">- Disparition de l’opérateur</div>
-        <div class="line">- Déclaré mort au combat</div>
+    <div class="line section-title">ÉVÉNEMENT EXCEPTIONNEL</div>
+    <div class="line">════════════════════════════</div>
 
+    <div class="line">Réapparition confirmée de SANTORO.</div>
 
-        <div class="line section-title">ÉVÉNEMENT EXCEPTIONNEL</div>
-        <div class="line">════════════════════════════</div>
-
-        <div class="line">Réapparition confirmée de SANTORO.</div>
-
-        <div class="line"></div>
-        <div class="line"><span class="label">Réaction du sujet HUNTER :</span></div>
-        <div class="line">- Reconnaissance immédiate</div>
-        <div class="line">- Contestation du commandement</div>
-        <div class="line">- Demande d’accès aux dossiers classifiés</div>
-
-        `;
-    }
+    <div class="line"></div>
+    <div class="line"><span class="label">Réaction du sujet HUNTER :</span></div>
+    <div class="line">- Reconnaissance immédiate</div>
+    <div class="line">- Contestation du commandement</div>
+    <div class="line">- Demande d’accès aux dossiers classifiés</div>
+    `;
 }
 
     if (section === "fenrir") {
