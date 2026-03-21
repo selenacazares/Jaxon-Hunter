@@ -171,7 +171,6 @@ async function bootSequence() {
     clearTerminal();
 
     renderHeader();
-    await typeLine("------------------------------------------");
     await typeLine("> INITIALISATION...");
     await typeLine("> CONNEXION AU SERVEUR...");
     await typeLine("------------------------------------------");
@@ -457,53 +456,118 @@ async function loadSection(section) {
 }
 
     /* CLASSIFIED */
-    if (section === "classified") {
-        renderHeader();
-        await typeLine("> NIVEAU OMEGA");
-        await typeLine("> AUTHENTIFICATION REQUISE");
-
-        const input = document.createElement("input");
-        terminal.appendChild(input);
-        input.focus();
-
-        input.addEventListener("keydown", async (e) => {
-            if (e.key === "Enter") {
-
-                if (input.value === "07235489") {
-                    clearTerminal();
-
-                    terminal.innerHTML += `
-                    <div class="main-title">DOSSIERS CONFIDENTIELS</div>
-
-                    <div class="psy-container">
-
-                        <div class="psy-column">
-                            <div class="psy-title">HUNTER, JAXON (GARM)</div>
-                            <div>➡ SORTIE VOLONTAIRE</div>
+        if (section === "classified") {
+        
+            renderHeader(); // ✅ HEADER
+        
+            await typeLine("> NIVEAU OMEGA");
+            await typeLine("> AUTHENTIFICATION REQUISE");
+        
+            const input = document.createElement("input");
+            input.type = "password";
+            input.style.background = "black";
+            input.style.color = "#00ff9c";
+            input.style.border = "1px solid #00ff9c";
+        
+            terminal.appendChild(input);
+            input.focus();
+        
+            input.addEventListener("keydown", async (e) => {
+                if (e.key === "Enter") {
+        
+                    if (input.value === "07235489") {
+        
+                        clearTerminal();
+                        renderHeader(); // ✅ IMPORTANT
+        
+                        await typeLine("ACCÈS VALIDÉ – NIVEAU OMEGA");
+                        await typeLine("> ------------------------------------------");
+                        await typeLine("");
+        
+                        terminal.innerHTML += `
+                        <div class="line main-title">DOSSIERS CONFIDENTIELS</div>
+                        <div class="line">════════════════════════════</div>
+        
+                        <div class="psy-container">
+        
+                            <!-- FENRIR -->
+                            <div class="psy-column">
+                                <div class="psy-title">VEGA, SANTORO (FENRIR)</div>
+                                <div class="line">════════════════════════════</div>
+        
+                                <div class="line"><span class="label">DÉCISION DU COMMANDEMENT :</span></div>
+                                <div class="line">- Statut administratif incohérent</div>
+                                <div class="line">- Risques psychologiques identifiés</div>
+                                <div class="line">- Réintégration impossible</div>
+        
+                                <div class="line"></div>
+                                <div class="line">➡ SORTIE ADMINISTRATIVE CONTRÔLÉE</div>
+        
+                                <div class="line"></div>
+                                <div class="line"><span class="label">TRANSFERT :</span> SAN ANDREAS SECURITY (SAS)</div>
+                                <div class="line">- Surveillance indirecte</div>
+                                <div class="line">- Exploitation opérationnelle</div>
+        
+                                <div class="line"></div>
+                                <div class="line"><span class="label">STATUT ACTUEL :</span></div>
+                                <div class="line">Nom : FENRIR</div>
+                                <div class="line">Niveau : ACTIF</div>
+                            </div>
+        
+                            <div class="psy-divider"></div>
+        
+                            <!-- GARM -->
+                            <div class="psy-column">
+                                <div class="psy-title">HUNTER, JAXON (GARM)</div>
+                                <div class="line">════════════════════════════</div>
+        
+                                <div class="line"><span class="label">DÉCISION DU COMMANDEMENT :</span></div>
+                                <div class="line">- Implication personnelle dans un dossier classifié</div>
+                                <div class="line">- Remise en question de la hiérarchie</div>
+                                <div class="line">- Lien direct avec FENRIR</div>
+        
+                                <div class="line"></div>
+                                <div class="line">➡ SORTIE VOLONTAIRE ENCADRÉE</div>
+        
+                                <div class="line"></div>
+                                <div class="line"><span class="label">TRANSFERT SAS :</span></div>
+                                <div class="line">- Surveillance indirecte</div>
+                                <div class="line">- Exploitation des compétences terrain</div>
+        
+                                <div class="line"></div>
+                                <div class="line"><span class="label">STATUT :</span></div>
+                                <div class="line">Nom : GARM</div>
+                                <div class="line">Niveau : MODÉRÉ</div>
+                            </div>
+        
                         </div>
-
-                        <div class="psy-divider"></div>
-
-                        <div class="psy-column">
-                            <div class="psy-title">VEGA, SANTORO (FENRIR)</div>
-                            <div>➡ SORTIE CONTRÔLÉE</div>
-                        </div>
-
-                    </div>
-
-                    <div class="glitch">████████████</div>
-                    `;
-
-                    addBackButton();
+        
+                        <div class="line">════════════════════════════</div>
+        
+                        <div class="line glitch">[NOTE INTERNE NON ARCHIVÉE]</div>
+                        <div class="line glitch">“Si Fenrir devient incontrôlable…</div>
+                        <div class="line glitch">Garm est la seule variable de stabilisation.”</div>
+                        `;
+        
+                        const glitch = document.createElement("div");
+                        glitch.textContent = "██████████████";
+                        glitch.classList.add("line","glitch");
+                        terminal.appendChild(glitch);
+        
+                        addBackButton(); // ✅ propre
+                    } else {
+        
+                        await typeLine("");
+                        await typeLine("> AUTHENTIFICATION ÉCHOUÉE");
+                        await typeLine("> IDENTIFIANT NON VALIDE");
+                        input.value = "";
+                    }
                 }
-            }
-        });
-
-        return;
-    }
-
-    addBackButton();
-}
+            });
+        
+            addBackButton(); // ✅ bouton pendant saisie
+            return;
+        }
 
 /* RETOUR */
 function addBackButton() {
