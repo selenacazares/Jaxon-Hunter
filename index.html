@@ -216,39 +216,74 @@ async function loadSection(section) {
 
     /* FENRIR */
     if (section === "fenrir") {
-        terminal.innerHTML = `
-        <div class="line header-main">SAN ANDREAS SECURITY (SAS)</div>
-        <div class="line header-sub">DÉPARTEMENT DES OPÉRATIONS SPÉCIALES</div>
+    terminal.innerHTML = `
 
-        <div class="identity-container">
-            <div>
-                <div class="line main-title">DOSSIER – FENRIR</div>
-                <div class="line">════════════════════════════</div>
+    <div class="identity-container">
+        <div>
+            <div class="line main-title">DOSSIER – FENRIR</div>
+            <div class="line">════════════════════════════</div>
 
-                <div class="line"><span class="label">Nom :</span> VEGA</div>
-                <div class="line"><span class="label">Prénom :</span> SANTORO</div>
-                <div class="line"><span class="label">Alias :</span> FENRIR</div>
-                <div class="line"><span class="label">Statut :</span> ACTIF (SAS)</div>
-                <div class="line"><span class="label">Ancien statut :</span> DÉCÉDÉ (ANNULÉ)</div>
-                <div class="line"><span class="label">Lien :</span> Jaxon Hunter (Frère)</div>
-            </div>
-
-            <div class="identity-photo">
-                <img src="https://i.goopics.net/ltop6d.jpg">
-            </div>
+            <div class="line"><span class="label">Nom :</span> VEGA</div>
+            <div class="line"><span class="label">Prénom :</span> SANTORO</div>
+            <div class="line"><span class="label">Alias :</span> FENRIR</div>
+            <div class="line"><span class="label">Statut :</span> ACTIF (SAS)</div>
+            <div class="line"><span class="label">Ancien statut :</span> DÉCÉDÉ (ANNULÉ)</div>
+            <div class="line"><span class="label">Lien :</span> Jaxon Hunter (Frère)</div>
         </div>
 
-        <div class="line section-title">HISTORIQUE OPÉRATIONNEL</div>
-        <div class="line">════════════════════════════</div>
+        <div class="identity-photo">
+            <img src="https://i.goopics.net/ltop6d.jpg">
+        </div>
+    </div>
 
-        <div class="line">Ancien membre d’une unité spécialisée engagée dans des opérations extérieures à haut risque.</div>
-        <div class="line">Le sujet s’est distingué par :</div>
-        <div class="line">- Infiltration</div>
-        <div class="line">- Combat rapproché</div>
-        <div class="line">- Adaptation en environnement hostile</div>
-        `;
-    }
 
+    <div class="line section-title">HISTORIQUE OPÉRATIONNEL</div>
+    <div class="line">════════════════════════════</div>
+
+    <div class="line">Ancien membre d’une unité spécialisée engagée dans des opérations extérieures à haut risque.</div>
+    <div class="line">Le sujet s’est distingué par :</div>
+    <div class="line">- Infiltration</div>
+    <div class="line">- Combat rapproché</div>
+    <div class="line">- Adaptation en environnement hostile</div>
+
+
+    <div class="line">════════════════════════════</div>
+    <div class="line section-title">OPÉRATION CLASSIFIÉE</div>
+    <div class="line">════════════════════════════</div>
+
+    <div class="line">Mission sous feu ennemi.</div>
+    <div class="line">Couverture assurée pour le repli de l’unité.</div>
+
+    <div class="line"></div>
+    <div class="line"><span class="label">Conséquence officielle :</span></div>
+    <div class="line">- Déclaré Mort au Combat</div>
+    <div class="line">- Corps non récupéré</div>
+    <div class="line">- Dossier archivé</div>
+
+
+    <div class="line">════════════════════════════</div>
+    <div class="line section-title">STATUT EXCEPTIONNEL</div>
+    <div class="line">════════════════════════════</div>
+
+    <div class="line">Réapparition confirmée après plusieurs années.</div>
+    <div class="line"><span class="label">Circonstances :</span> INCONNUES</div>
+
+    <div class="line"></div>
+    <div class="line"><span class="label">État physique :</span> viable</div>
+    <div class="line"><span class="label">État psychologique :</span> instable</div>
+    <div class="line"><span class="label">Mémoire :</span> partiellement altérée</div>
+
+
+    <div class="line">════════════════════════════</div>
+    <div class="line section-title">STATUT ACTUEL</div>
+    <div class="line">════════════════════════════</div>
+
+    <div class="line">⚠ DOSSIER SURVEILLÉ ⚠</div>
+    <div class="line">Enquête interne ouverte</div>
+    <div class="line">Reclassée : SECRET DÉFENSE</div>
+
+    `;
+}
     /* PSY */
     if (section === "psy") {
     terminal.innerHTML = `
