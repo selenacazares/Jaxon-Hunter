@@ -182,11 +182,13 @@ async function bootSequence() {
     await typeLine("> INITIALISATION...");
     await typeLine("> CONNEXION AU SERVEUR...");
     await typeLine("> CHIFFREMENT VALIDÉ");
+    await typeLine("> ------------------------------------------");
     await typeLine("> CHARGEMENT....07%");
     await typeLine("> CHARGEMENT....23%");
     await typeLine("> CHARGEMENT....54%");
     await typeLine("> CHARGEMENT....89%");
     await typeLine("> CHARGEMENT TERMINÉ");
+    await typeLine("> ------------------------------------------");
     await typeLine("> ACCÈS AUTORISÉ");
     await typeLine("> BIENVENUE, OPÉRATEUR");
     await typeLine("");
@@ -271,6 +273,10 @@ async function loadSection(section) {
                     <div class="line">STATUT ACTUEL :</div>
                     <div class="line">Nom : FENRIR</div>
                     <div class="line">Niveau : ACTIF</div>
+                </div>
+                
+                <!-- DIVIDER -->
+                <div class="psy-divider"></div>
 
                     <div class="line"></div>
                     <div class="line">==========================================</div>
@@ -292,9 +298,9 @@ async function loadSection(section) {
                     <div class="line">Niveau : MODÉRÉ</div>
 
                     <div class="line"></div>
-                    <div class="line">------------------------------------------</div>
+                    <div class="line">════════════════════════════════════════════</div>
 
-                    <div class="line glitch">[NOTE INTERNE NON ARCHIVÉE]</div>
+                    <div class="line glitch">[NOTE INTERNE - NON ARCHIVÉE]</div>
                     <div class="line glitch">“Si Fenrir devient incontrôlable…</div>
                     <div class="line glitch">Garm est la seule variable de stabilisation.”</div>
                     `;
@@ -309,7 +315,6 @@ async function loadSection(section) {
                     await typeLine("");
                     await typeLine("> AUTHENTIFICATION ÉCHOUÉE");
                     await typeLine("> IDENTIFIANT NON VALIDE");
-                    await typeLine("> JOURNALISATION EN COURS...");
                     input.value = "";
                 }
             }
