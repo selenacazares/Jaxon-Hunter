@@ -187,10 +187,10 @@ function showSimpleMenu() {
     menu.classList.add("menu");
 
     menu.innerHTML = `
-        <span onclick="loadSection('garm')">[1] GARM</span>
-        <span onclick="loadSection('fenrir')">[2] FENRIR</span>
-        <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUES</span>
-        <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS</span>
+        <span onclick="loadSection('garm')">[1] DOSSIER PERSONNEL - GARM</span><br>
+        <span onclick="loadSection('fenrir')">[2] DOSSIER PERSONNEL - FENRIR</span><br>
+        <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUES</span><br>
+        <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS (Accès sécurisé)</span><br>
     `;
 
     terminal.appendChild(menu);
