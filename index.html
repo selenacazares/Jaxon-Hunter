@@ -6,131 +6,83 @@
 
 <style>
 body {
-    background: radial-gradient(circle, #0a0a0a, #050505);
+    background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%);
     color: #00ff9c;
     font-family: "Courier New", monospace;
+    margin: 0;
     padding: 20px;
+    overflow-x: hidden;
     font-size: 18px;
+}
+
+/* grain écran */
+body::after {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+#terminal {
+    max-width: 900px;
+    margin: auto;
+    position: relative;
+}
+
+/* scan */
+#terminal::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: rgba(0,255,156,0.15);
+    animation: scan 6s linear infinite;
+}
+
+@keyframes scan {
+    0% { top: 0; }
+    100% { top: 100%; }
 }
 
 .line {
     margin: 6px 0;
-}
-    
-/* SEPARATION DE PAGE */
-.psy-container {
-    display: flex;
-    gap: 30px;
-    margin-top: 20px;
-}
-
-.psy-column {
-    flex: 1;
-}
-
-.psy-divider {
-    width: 2px;
-    background: #00ff9c;
-    box-shadow: 0 0 6px #00ff9c;
-}
-
-.psy-title {
-    font-size: 20px;
-    font-weight: bold;
     text-shadow: 0 0 6px #00ff9c;
-    margin-bottom: 10px;
 }
 
-/* TITRES */
-.main-title {
-    font-size: 28px;
-    font-weight: bold;
-    text-shadow: 0 0 5px #00ff9c;
-}
-
-.section-title {
-    font-size: 20px;
-    font-weight: bold;
-    text-shadow: 0 0 6px #00ff9c;
-    margin-top: 15px;
-}
-
-    /* HEADER */
-.header-main {
-    font-size: 26px;
-    font-weight: bold;
-    text-shadow: 0 0 10px #00ff9c;
-}
-
-.header-sub {
-    font-size: 18px;
-    opacity: 0.8;
-}
-
-/* MENU INTERACTIF */
-.menu span {
-    display: inline-block;
-    padding: 6px 10px;
-    cursor: pointer;
-    font-size: 20px;
-    transition: 0.2s;
-}
-
-/* effet inversion */
-.menu span:hover {
-    background: #00ff9c;
-    color: black;
-    box-shadow: 0 0 10px #00ff9c;
-}
-
-/* effet clic sur le terminal*/
-.menu span:active {
-    background: #00ff9c;
-    color: black;
-    transform: scale(0.98);
-}
-    
-/* LABELS */
-.label {
-    font-weight: bold;
-}
-
-.psy-title:last-child {
-    animation: glitch 1s infinite;
-}
-
-/* MENU */
 .menu span {
     display: block;
     cursor: pointer;
     font-size: 20px;
 }
+
 .menu span:hover {
     color: white;
 }
 
-/* LAYOUT */
 .identity-container {
     display: flex;
     gap: 30px;
-    align-items: flex-start;
+    margin-top: 20px;
 }
 
 .identity-photo {
     width: 180px;
     height: 220px;
     border: 2px solid #00ff9c;
-    box-shadow: 0 0 6px #00ff9c;
+    box-shadow: 0 0 10px #00ff9c;
+    overflow: hidden;
 }
 
 .identity-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(100%);
+    filter: grayscale(100%) contrast(120%);
 }
 
-/* GLITCH */
 .glitch {
     animation: glitch 0.3s infinite;
 }
@@ -153,7 +105,7 @@ body {
 <script>
 const terminal = document.getElementById("terminal");
 
-function typeLine(text, speed = 20) {
+function typeLine(text, delay = 20) {
     return new Promise(resolve => {
         const line = document.createElement("div");
         line.classList.add("line");
@@ -162,9 +114,9 @@ function typeLine(text, speed = 20) {
         let i = 0;
         function typing() {
             if (i < text.length) {
-                line.textContent += text[i];
+                line.textContent += text.charAt(i);
                 i++;
-                setTimeout(typing, speed);
+                setTimeout(typing, delay);
             } else resolve();
         }
         typing();
@@ -175,20 +127,11 @@ function clearTerminal() {
     terminal.innerHTML = "";
 }
 
-/* BOOT */
 async function bootSequence() {
     clearTerminal();
 
-    const main = document.createElement("div");
-    main.classList.add("line", "header-main");
-    main.textContent = "SAN ANDREAS SECURITY (SAS)";
-    terminal.appendChild(main);
-
-    const sub = document.createElement("div");
-    sub.classList.add("line", "header-sub");
-    sub.textContent = "DÉPARTEMENT DES OPÉRATIONS SPÉCIALES";
-    terminal.appendChild(sub);
-
+    await typeLine("SAN ANDREAS SECURITY (SAS)");
+    await typeLine("DÉPARTEMENT DES OPÉRATIONS SPÉCIALES");
     await typeLine("> ------------------------------------------");
     await typeLine("> INITIALISATION...");
     await typeLine("> CONNEXION AU SERVEUR...");
@@ -199,30 +142,36 @@ async function bootSequence() {
     await typeLine("> CHARGEMENT....89%");
     await typeLine("> CHARGEMENT TERMINÉ");
     await typeLine("> ACCÈS AUTORISÉ");
+    await typeLine("> ------------------------------------------");
     await typeLine("> BIENVENUE, OPÉRATEUR");
+    await typeLine("> ------------------------------------------");
     await typeLine("");
 
-    menu();
+    showMainMenu();
 }
+    
+/* MENU PRINCIPAL */
+async function showMainMenu() {
+    clearTerminal();
 
-/* MENU */
-function menu() {
+    await typeLine("SAN ANDREAS SECURITY (SAS)");
+    await typeLine("DÉPARTEMENT DES OPÉRATIONS SPÉCIALES");
+    await typeLine("> ------------------------------------------");
+    await typeLine("Veuillez sélectionner un dossier");
+    await typeLine("> ------------------------------------------");
+    await typeLine("");
+
     const menu = document.createElement("div");
     menu.classList.add("menu");
 
     menu.innerHTML = `
-        <span onclick="loadSection('garm')">[1] GARM</span><br>
-        <span onclick="loadSection('fenrir')">[2] FENRIR</span><br>
-        <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUES</span><br>
+        <span onclick="loadSection('garm')">[1] GARM - DOSSIER PERSONNEL</span>
+        <span onclick="loadSection('fenrir')">[2] FENRIR - DOSSIER PERSONNEL</span>
+        <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUES</span>
         <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS</span>
     `;
 
     terminal.appendChild(menu);
-}
-
-function showMainMenu() {
-    clearTerminal();
-    menu();
 }
 
 /* SECTIONS */
@@ -233,188 +182,193 @@ async function loadSection(section) {
     terminal.innerHTML = `
     <div class="identity-container">
         <div>
-            <div class="line main-title">DOSSIER – GARM</div>
-            <div class="line">════════════════════════════</div>
-
-            <div class="line"><span class="label">Nom :</span> HUNTER</div>
-            <div class="line"><span class="label">Prénom :</span> JAXON</div>
-            <div class="line"><span class="label">Alias :</span> GARM</div>
-            <div class="line"><span class="label">Statut :</span> ACTIF (SAS)</div>
-            <div class="line"><span class="label">Ancien statut :</span> SORTIE VOLONTAIRE</div>
-            <div class="line"><span class="label">Lien :</span> Santoro Vega (Frère)</div>
+            <div class="line">DOSSIER – GARM</div>
+            <div class="line">------------------------------------------</div>
+            <div class="line">Nom : HUNTER</div>
+            <div class="line">Prénom : JAXON</div>
+            <div class="line">Alias : GARM</div>
+            <div class="line">Statut : ACTIF (SAS)</div>
+            <div class="line">Ancien statut : SORTIE VOLONTAIRE</div>
+            <div class="line">Lien : Santoro Vega (Frère)</div>
         </div>
-
         <div class="identity-photo">
             <img src="https://i.goopics.net/ltop6d.jpg">
         </div>
     </div>
 
-            <div class="line section-title">HISTORIQUE MILITAIRE</div>
-            <div class="line">════════════════════════════</div>
+    <div class="line"></div>
+    <div class="line">------------------------------------------</div>
+    <div class="line">HISTORIQUE MILITAIRE</div>
+    <div class="line">------------------------------------------</div>
 
-            <div class="line">Ancien opérateur d’une unité spécialisée engagée dans des opérations extérieures classifiées.</div>
-            <div class="line">Le sujet s’est rapidement imposé comme élément central grâce à :</div>
-            <div class="line">- Capacités de commandement</div>
-            <div class="line">- Gestion du stress en situation critique</div>
-            <div class="line">- Cohésion avec son escouade</div>
-            <div class="line">Reconnu pour maintenir ses hommes opérationnels dans des conditions extrêmes.</div>
+    <div class="line">Ancien opérateur d’une unité spécialisée.</div>
+    <div class="line">Opérations extérieures classifiées.</div>
+    <div class="line"></div>
+    <div class="line">Le sujet s’est imposé comme élément central grâce à :</div>
+    <div class="line">- Capacités de commandement</div>
+    <div class="line">- Gestion du stress en situation critique</div>
+    <div class="line">- Cohésion avec son escouade</div>
+    <div class="line"></div>
+    <div class="line">Maintient ses hommes opérationnels</div>
+    <div class="line">dans des conditions extrêmes.</div>
 
-            <div class="line section-title">INCIDENT MAJEUR</div>
-            <div class="line">════════════════════════════</div>
+    <div class="line"></div>
+    <div class="line">------------------------------------------</div>
+    <div class="line">INCIDENT MAJEUR</div>
+    <div class="line">------------------------------------------</div>
 
-            <div class="line">Lors d’une mission à haut risque, l’unité du sujet a été prise sous feu ennemi.</div>
-            <div class="line">SANTORO : Sacrifice pour couvrir le repli.</div>
+    <div class="line">Mission à haut risque.</div>
+    <div class="line">Unité prise sous feu ennemi.</div>
+    <div class="line"></div>
+    <div class="line">SANTORO : Sacrifice pour couvrir le repli.</div>
+    <div class="line"></div>
+    <div class="line">Conséquences :</div>
+    <div class="line">- Disparition de l’opérateur</div>
+    <div class="line">- Déclaré mort au combat</div>
 
-            <div class="line"></div>
-            <div class="line"><span class="label">Conséquences :</span></div>
-            <div class="line">- Disparition de l’opérateur</div>
-            <div class="line">- Déclaré mort au combat</div>
+    <div class="line"></div>
+    <div class="line">------------------------------------------</div>
+    <div class="line">ÉVÉNEMENT EXCEPTIONNEL</div>
+    <div class="line">------------------------------------------</div>
 
-            <div class="line section-title">ÉVÉNEMENT EXCEPTIONNEL</div>
-            <div class="line">════════════════════════════</div>
-
-            <div class="line">Réapparition confirmée de SANTORO.</div>
-
-            <div class="line"></div>
-            <div class="line"><span class="label">Réaction du sujet HUNTER :</span></div>
-            <div class="line">- Reconnaissance immédiate</div>
-            <div class="line">- Contestation du commandement</div>
-            <div class="line">- Demande d’accès aux dossiers classifiés</div>
+    <div class="line">Réapparition confirmée de SANTORO.</div>
+    <div class="line"></div>
+    <div class="line">Réaction du sujet HUNTER :</div>
+    <div class="line">- Reconnaissance immédiate</div>
+    <div class="line">- Contestation du commandement</div>
+    <div class="line">- Demande d’accès aux dossiers classifiés</div>
     `;
 }
 
-    if (section === "fenrir") {
+if (section === "fenrir") {
     terminal.innerHTML = `
     <div class="identity-container">
         <div>
-            <div class="line main-title">DOSSIER – FENRIR</div>
-            <div class="line">════════════════════════════</div>
-
-            <div class="line"><span class="label">Nom :</span> VEGA</div>
-            <div class="line"><span class="label">Prénom :</span> SANTORO</div>
-            <div class="line"><span class="label">Alias :</span> FENRIR</div>
-            <div class="line"><span class="label">Statut :</span> ACTIF (SAS)</div>
-            <div class="line"><span class="label">Ancien statut :</span> DÉCÉDÉ (ANNULÉ)</div>
-            <div class="line"><span class="label">Lien :</span> Jaxon Hunter (Frère)</div>
+            <div class="line">DOSSIER – FENRIR</div>
+            <div class="line">------------------------------------------</div>
+            <div class="line">Nom : VEGA</div>
+            <div class="line">Prénom : SANTORO</div>
+            <div class="line">Alias : FENRIR</div>
+            <div class="line">Statut : ACTIF (SAS)</div>
+            <div class="line">Ancien statut : DÉCÉDÉ (ANNULÉ)</div>
+            <div class="line">Lien : Jaxon Hunter (Frère)</div>
         </div>
-
         <div class="identity-photo">
             <img src="https://i.goopics.net/8z6var.jpg">
         </div>
     </div>
 
-            <div class="line section-title">HISTORIQUE OPÉRATIONNEL</div>
-            <div class="line">════════════════════════════</div>
+    <div class="line"></div>
+    <div class="line">------------------------------------------</div>
+    <div class="line">HISTORIQUE OPÉRATIONNEL</div>
+    <div class="line">------------------------------------------</div>
 
-            <div class="line">Ancien membre d’une unité spécialisée engagée dans des opérations extérieures à haut risque.</div>
-            <div class="line">Le sujet s’est distingué par :</div>
-            <div class="line">- Infiltration</div>
-            <div class="line">- Combat rapproché</div>
-            <div class="line">- Adaptation en environnement hostile</div>
+    <div class="line">Ancien membre d’une unité spécialisée.</div>
+    <div class="line">Opérations extérieures à haut risque.</div>
+    <div class="line"></div>
+    <div class="line">Compétences relevées :</div>
+    <div class="line">- Infiltration</div>
+    <div class="line">- Combat rapproché</div>
+    <div class="line">- Adaptation en environnement hostile</div>
 
-            <div class="line">════════════════════════════</div>
-            <div class="line section-title">OPÉRATION CLASSIFIÉE</div>
-            <div class="line">════════════════════════════</div>
+    <div class="line"></div>
+    <div class="line">------------------------------------------</div>
+    <div class="line">OPÉRATION CLASSIFIÉE</div>
+    <div class="line">------------------------------------------</div>
 
-            <div class="line">Mission sous feu ennemi.</div>
-            <div class="line">Couverture assurée pour le repli de l’unité.</div>
+    <div class="line">Mission sous feu ennemi.</div>
+    <div class="line">Couverture assurée pour le repli de l’unité.</div>
+    <div class="line"></div>
+    <div class="line">Conséquence officielle :</div>
+    <div class="line">- Déclaré Mort au Combat</div>
+    <div class="line">- Corps non récupéré</div>
+    <div class="line">- Dossier archivé</div>
 
-            <div class="line"></div>
-            <div class="line"><span class="label">Conséquence officielle :</span></div>
-            <div class="line">- Déclaré Mort au Combat</div>
-            <div class="line">- Corps non récupéré</div>
-            <div class="line">- Dossier archivé</div>
+    <div class="line"></div>
+    <div class="line">------------------------------------------</div>
+    <div class="line">STATUT EXCEPTIONNEL</div>
+    <div class="line">------------------------------------------</div>
 
-            <div class="line">════════════════════════════</div>
-            <div class="line section-title">STATUT EXCEPTIONNEL</div>
-            <div class="line">════════════════════════════</div>
+    <div class="line">Réapparition confirmée après plusieurs années.</div>
+    <div class="line">Circonstances : INCONNUES</div>
+    <div class="line"></div>
+    <div class="line">État physique : viable</div>
+    <div class="line">État psychologique : instable</div>
+    <div class="line">Mémoire : partiellement altérée</div>
 
-            <div class="line">Réapparition confirmée après plusieurs années.</div>
-            <div class="line"><span class="label">Circonstances :</span> INCONNUES</div>
+    <div class="line"></div>
+    <div class="line">------------------------------------------</div>
+    <div class="line">STATUT ACTUEL</div>
+    <div class="line">------------------------------------------</div>
 
-            <div class="line"></div>
-            <div class="line"><span class="label">État physique :</span> viable</div>
-            <div class="line"><span class="label">État psychologique :</span> instable</div>
-            <div class="line"><span class="label">Mémoire :</span> partiellement altérée</div>
-
-            <div class="line">════════════════════════════</div>
-            <div class="line section-title">STATUT ACTUEL</div>
-            <div class="line">════════════════════════════</div>
-
-            <div class="line">⚠ DOSSIER SURVEILLÉ ⚠</div>
-            <div class="line">Enquête interne ouverte</div>
-            <div class="line">Reclassée : SECRET DÉFENSE</div>
+    <div class="line">⚠ DOSSIER SURVEILLÉ ⚠</div>
+    <div class="line">Enquête interne ouverte</div>
+    <div class="line">Reclassée : SECRET DÉFENSE</div>
     `;
 }
 
-    if (section === "psy") {
+   if (section === "psy") {
     terminal.innerHTML = `
-    <div class="line main-title">RAPPORTS PSYCHOLOGIQUES</div>
-    <div class="line">════════════════════════════</div>
+    <div class="line">RAPPORTS PSYCHOLOGIQUES</div>
+    <div class="line">------------------------------------------</div>
 
-    <div class="psy-container">
+    <div class="line"></div>
+    <div class="line">SUJET : HUNTER, JAXON (GARM)</div>
+    <div class="line">------------------------------------------</div>
 
-        <!-- GARM -->
-        <div class="psy-column">
-            <div class="psy-title">HUNTER, JAXON (GARM)</div>
-            <div class="line">════════════════════════════</div>
+    <div class="line">IMPACT POST-OPÉRATIONNEL :</div>
+    <div class="line">- Baisse de discipline administrative</div>
+    <div class="line">- Implication excessive en mission</div>
+    <div class="line">- Tendance à ignorer les ordres</div>
+    <div class="line">  (si conflit avec la sécurité de son escouade)</div>
 
-            <div class="line"><span class="label">IMPACT :</span></div>
-            <div class="line">- Baisse de discipline</div>
-            <div class="line">- Implication excessive</div>
-            <div class="line">- Ignore certains ordres</div>
-            <div class="line">(protection escouade)</div>
+    <div class="line"></div>
+    <div class="line">OBSERVATION :</div>
+    <div class="line">- Aucune défaillance opérationnelle majeure</div>
+    <div class="line">- Efficacité maintenue, voire accrue</div>
 
-            <div class="line"></div>
-            <div class="line"><span class="label">OBSERVATION :</span></div>
-            <div class="line">- Aucune défaillance</div>
-            <div class="line">- Efficacité accrue</div>
+    <div class="line"></div>
+    <div class="line">ÉVALUATION INTERNE :</div>
+    <div class="line">- Sens du devoir élevé</div>
+    <div class="line">- Loyauté extrême envers ses coéquipiers</div>
+    <div class="line">- Résistance psychologique élevée</div>
 
-            <div class="line"></div>
-            <div class="line"><span class="label">ÉVALUATION :</span></div>
-            <div class="line">- Sens du devoir élevé</div>
-            <div class="line">- Loyauté extrême</div>
-            <div class="line">- Résistance élevée</div>
+    <div class="line"></div>
+    <div class="line">⚠ RISQUES IDENTIFIÉS :</div>
+    <div class="line">- Attachement prioritaire à certaines cibles</div>
+    <div class="line">  (notamment SANTORO)</div>
+    <div class="line">- Désobéissance possible en cas de conflit moral</div>
 
-            <div class="line"></div>
-            <div class="line"><span class="label">⚠ RISQUES :</span></div>
-            <div class="line">- Attachement à SANTORO</div>
-            <div class="line">- Désobéissance morale</div>
-        </div>
+    <div class="line"></div>
+    <div class="line">==========================================</div>
 
-        <!-- DIVIDER -->
-        <div class="psy-divider"></div>
+    <div class="line"></div>
+    <div class="line">SUJET : VEGA, SANTORO (FENRIR)</div>
+    <div class="line">------------------------------------------</div>
 
-        <!-- FENRIR -->
-        <div class="psy-column">
-            <div class="psy-title">VEGA, SANTORO (FENRIR)</div>
-            <div class="line">════════════════════════════</div>
+    <div class="line">ÉVALUATION INTERNE :</div>
+    <div class="line">- Capacités opérationnelles intactes ou supérieures</div>
+    <div class="line">- Obéissance sélective</div>
+    <div class="line">- Signes de conditionnement comportemental</div>
+    <div class="line">  (origine non identifiée)</div>
+    <div class="line">- Profil instable mais fonctionnel en mission</div>
 
-            <div class="line"><span class="label">ÉVALUATION :</span></div>
-            <div class="line">- Capacités intactes</div>
-            <div class="line">- Obéissance sélective</div>
-            <div class="line">- Conditionnement inconnu</div>
-            <div class="line">- Instable mais opérationnel</div>
+    <div class="line"></div>
+    <div class="line">⚠ RISQUES IDENTIFIÉS :</div>
+    <div class="line">- Déclencheurs inconnus</div>
+    <div class="line">- Loyauté non garantie hors environnement contrôlé</div>
 
-            <div class="line"></div>
-            <div class="line"><span class="label">⚠ RISQUES :</span></div>
-            <div class="line">- Déclencheurs inconnus</div>
-            <div class="line">- Loyauté incertaine</div>
-
-            <div class="line"></div>
-            <div class="line"><span class="label">NOTE :</span></div>
-            <div class="line">“Santoro est mort sur le terrain.</div>
-            <div class="line">Ce qui est revenu…</div>
-            <div class="line">n’est plus le même homme.”</div>
-        </div>
-
-    </div>
+    <div class="line"></div>
+    <div class="line">NOTE INTERNE (NON OFFICIELLE) :</div>
+    <div class="line">“Santoro est mort sur le terrain.</div>
+    <div class="line">Ce qui est revenu… n’est plus tout à fait le même homme.”</div>
     `;
 }
 
     if (section === "classified") {
         await typeLine("> NIVEAU OMEGA");
         await typeLine("> AUTHENTIFICATION REQUISE");
+        await typeLine("");
 
         const input = document.createElement("input");
         input.type = "password";
@@ -427,7 +381,6 @@ async function loadSection(section) {
 
         input.addEventListener("keydown", async (e) => {
             if (e.key === "Enter") {
-
                 if (input.value === "07235489") {
 
                     clearTerminal();
@@ -438,7 +391,7 @@ async function loadSection(section) {
 
                     terminal.innerHTML += `
                     <div class="line">DOSSIERS CONFIDENTIELS</div>
-                    <div class="line">==========================================</div>
+                    <div class="line">------------------------------------------</div>
 
                     <div class="line"></div>
                     <div class="line">SUJET : VEGA, SANTORO (FENRIR)</div>
@@ -501,22 +454,32 @@ async function loadSection(section) {
     await typeLine("> AUTHENTIFICATION ÉCHOUÉE", 10);
     await typeLine("> IDENTIFIANT NON VALIDE", 10);
     await typeLine("> JOURNALISATION EN COURS...", 10);
+
+    await new Promise(r => setTimeout(r, 700));
+
+    input.value = "";
+    input.focus();
+}
                 }
             }
         });
     }
 
+    /* RETOUR MENU */
     const back = document.createElement("div");
     back.classList.add("line");
     back.textContent = "> RETOUR MENU";
     back.style.cursor = "pointer";
-    back.onclick = showMainMenu;
+
+    back.onclick = () => {
+        showMainMenu();
+    };
 
     terminal.appendChild(back);
 }
 
-/* START */
-bootSequence();
+/* BOOT */
+showMainMenu();
 </script>
 
 </body>
