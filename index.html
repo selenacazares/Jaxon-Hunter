@@ -244,6 +244,7 @@ async function loadSection(section) {
 
         </div>
         `;
+    }
 
     /* FENRIR */
     if (section === "fenrir") {
@@ -310,7 +311,7 @@ async function loadSection(section) {
                 if (input.value === "07235489") {
                     clearTerminal();
 
-                    terminal.innerHTML = `
+                    terminal.innerHTML += `
                     <div class="main-title">DOSSIERS CONFIDENTIELS</div>
 
                     <div class="psy-container">
