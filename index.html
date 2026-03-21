@@ -171,7 +171,6 @@ async function bootSequence() {
     clearTerminal();
 
     renderHeader();
-    await typeLine("------------------------------------------");
     await typeLine("> INITIALISATION...");
     await typeLine("> CONNEXION AU SERVEUR...");
     await typeLine("------------------------------------------");
@@ -456,51 +455,57 @@ async function loadSection(section) {
     /* CLASSIFIED */
     if (section === "classified") {
         renderHeader();
+    
         await typeLine("> NIVEAU OMEGA");
         await typeLine("> AUTHENTIFICATION REQUISE");
-
+    
         const input = document.createElement("input");
+        input.type = "password";
+        input.style.background = "black";
+        input.style.color = "#00ff9c";
+        input.style.border = "1px solid #00ff9c";
+    
         terminal.appendChild(input);
         input.focus();
-
+    
         input.addEventListener("keydown", async (e) => {
             if (e.key === "Enter") {
-
+    
                 if (input.value === "07235489") {
+    
                     clearTerminal();
-
+                    renderHeader(); // ✅ IMPORTANT
+    
                     terminal.innerHTML += `
                     <div class="main-title">DOSSIERS CONFIDENTIELS</div>
-
+    
                     <div class="psy-container">
-
+    
                         <div class="psy-column">
                             <div class="psy-title">HUNTER, JAXON (GARM)</div>
                             <div>➡ SORTIE VOLONTAIRE</div>
                         </div>
-
+    
                         <div class="psy-divider"></div>
-
+    
                         <div class="psy-column">
                             <div class="psy-title">VEGA, SANTORO (FENRIR)</div>
                             <div>➡ SORTIE CONTRÔLÉE</div>
                         </div>
-
+    
                     </div>
-
+    
                     <div class="glitch">████████████</div>
                     `;
-
-                    addBackButton();
+    
+                    addBackButton(); // ✅ bouton après accès
                 }
             }
         });
-
+    
+        addBackButton(); // ✅ bouton pendant saisie
         return;
     }
-
-    addBackButton();
-}
 
 /* RETOUR */
 function addBackButton() {
