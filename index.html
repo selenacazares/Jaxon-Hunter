@@ -128,7 +128,7 @@ body {
     100% { transform: translate(0); }
 }
 
-/* correction glitch Fenrir */
+/*  glitch Fenrir */
 .psy-column:last-child .psy-title {
     animation: glitch 1s infinite;
 }
@@ -160,6 +160,38 @@ function typeLine(text, speed = 20) {
     });
 }
 
+function showSimpleMenu() {
+    clearTerminal();
+
+    const main = document.createElement("div");
+    main.classList.add("line", "header-main");
+    main.textContent = "SAN ANDREAS SECURITY (SAS)";
+    terminal.appendChild(main);
+
+    const sub = document.createElement("div");
+    sub.classList.add("line", "header-sub");
+    sub.textContent = "DÉPARTEMENT DES OPÉRATIONS SPÉCIALES";
+    terminal.appendChild(sub);
+
+    const separator = document.createElement("div");
+    separator.classList.add("line");
+    separator.textContent = "════════════════════════════";
+    terminal.appendChild(separator);
+
+    const menu = document.createElement("div");
+    menu.classList.add("menu");
+
+    menu.innerHTML = `
+        <span onclick="loadSection('garm')">[1] GARM</span>
+        <span onclick="loadSection('fenrir')">[2] FENRIR</span>
+        <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUES</span>
+        <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS</span>
+    `;
+
+    terminal.appendChild(menu);
+}
+
+    
 function clearTerminal() {
     terminal.innerHTML = "";
 }
@@ -530,7 +562,7 @@ async function loadSection(section) {
     back.classList.add("line");
     back.textContent = "> RETOUR MENU";
     back.style.cursor = "pointer";
-    back.onclick = showMainMenu;
+    back.onclick = showSimpleMenu;
 
     terminal.appendChild(back);
 }
