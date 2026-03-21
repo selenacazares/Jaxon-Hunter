@@ -117,6 +117,11 @@ body {
     color: #00ff9c;
 }
 
+.identity-card {
+    display: flex;
+    gap: 40px;
+}
+
 /* LAYOUT DOSSIER */
 .file-layout {
     display: flex;
@@ -270,29 +275,33 @@ async function loadSection(section) {
     
         <div class="identity-card">
         
-            <div class="identity-container">
+            <!-- TEXTE GAUCHE -->
+            <div class="identity-left">
         
-                <!-- GAUCHE -->
-                <div class="identity-left">
+                <div class="line section-title">DOSSIER PERSONNEL – AGENT : GARM</div>
+                <div class="line">════════════════════════════</div>
         
-                    <div class="line section-title">DOSSIER PERSONNEL – AGENT : GARM</div>
-                    <div class="line">════════════════════════════</div>
+                <div class="line">Ancien opérateur d’une unité spécialisée...</div>
+                <div class="line">- Capacités de commandement</div>
+                <div class="line">- Gestion du stress</div>
         
-                    <div class="line"><span class="label">Nom :</span> HUNTER</div>
-                    <div class="line"><span class="label">Prénom :</span> JAXON</div>
-                    <div class="line"><span class="label">Alias :</span> GARM</div>
-                    <div class="line"><span class="label">Statut :</span> ACTIF (SAS)</div>
-                    <div class="line"><span class="label">Ancien statut :</span> SORTIE VOLONTAIRE</div>
-                    <div class="line"><span class="label">Lien :</span> Santoro Vega (Frère)</div>
+            </div>
         
-                </div>
+            <!-- CADRE DROITE -->
+            <div>
         
-                <!-- DROITE -->
                 <div class="identity-photo">
                     <img src="https://i.goopics.net/8z6var.jpg">
                 </div>
         
+                <div class="line"><span class="label">Nom :</span> HUNTER</div>
+                <div class="line"><span class="label">Prénom :</span> JAXON</div>
+                <div class="line"><span class="label">Alias :</span> GARM</div>
+                <div class="line"><span class="label">Statut :</span> ACTIF</div>
+        
             </div>
+        
+        </div>
         
         </div>
         
