@@ -334,7 +334,7 @@ async function loadSection(section) {
             <div class="line"><span class="label">Prénom :</span> SANTORO</div>
             <div class="line"><span class="label">Alias :</span> FENRIR</div>
             <div class="line"><span class="label">Statut :</span> ACTIF (SAS)</div>
-            <div class="line"><span class="label">Ancien statut :</span> DÉCÉDÉ (ANNULÉ)</div>
+            <div class="line"><span class="label">Ancien statut :</span> DÉCÉDÉ AU COMBAT (ANNULÉ)</div>
             <div class="line"><span class="label">Lien :</span> Jaxon Hunter (Frère)</div>
         </div>
 
@@ -467,6 +467,13 @@ async function loadSection(section) {
     
     if (section === "classified") {
         await typeLine("> NIVEAU OMEGA");
+        await typeLine("> ------------------------------------------");
+        await typeLine("> CHARGEMENT....07%");
+        await typeLine("> CHARGEMENT....23%");
+        await typeLine("> CHARGEMENT....54%");
+        await typeLine("> CHARGEMENT....89%");
+        await typeLine("> CHARGEMENT TERMINÉ");
+        await typeLine("> ------------------------------------------");
         await typeLine("> AUTHENTIFICATION REQUISE");
 
         const input = document.createElement("input");
@@ -487,6 +494,7 @@ async function loadSection(section) {
 
                     await typeLine("ACCÈS VALIDÉ – NIVEAU OMEGA");
                     await typeLine("> ------------------------------------------");
+
                     await typeLine("");
 
                     terminal.innerHTML += `
