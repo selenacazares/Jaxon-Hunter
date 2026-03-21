@@ -203,7 +203,7 @@ function menu() {
 
     menu.innerHTML = `
         <span onclick="loadSection('garm')">[1] DOSSIER PERSONNEL - GARM</span><br>
-        <span onclick="loadSection('fenrir')">[2] DOSSIER PERSONNEL -  FENRIR</span><br>
+        <span onclick="loadSection('fenrir')">[2] DOSSIER PERSONNEL - FENRIR</span><br>
         <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUES</span><br>
         <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS (Accès sécurisé) </span>
     `;
@@ -220,8 +220,213 @@ function showMainMenu() {
 async function loadSection(section) {
     clearTerminal();
 
-    // 👉 TES BLOCS GARM / FENRIR / PSY ICI (inchangés)
+ // GARM / FENRIR / PSY ICI 
 
+    async function loadSection(section) {
+    clearTerminal();
+
+    if (section === "garm") {
+        terminal.innerHTML = `
+
+        <div class="identity-container">
+            <div>
+                <div class="line main-title">DOSSIER – GARM</div>
+                <div class="line">════════════════════════════</div>
+
+                <div class="line"><span class="label">Nom :</span> HUNTER</div>
+                <div class="line"><span class="label">Prénom :</span> JAXON</div>
+                <div class="line"><span class="label">Alias :</span> GARM</div>
+                <div class="line"><span class="label">Statut :</span> ACTIF (SAS)</div>
+                <div class="line"><span class="label">Ancien statut :</span> SORTIE VOLONTAIRE</div>
+                <div class="line"><span class="label">Lien :</span> Santoro Vega (Frère)</div>
+            </div>
+
+            <div class="identity-photo">
+                <img src="https://i.goopics.net/8z6var.jpg">
+            </div>
+        </div>
+
+
+        <div class="line section-title">HISTORIQUE MILITAIRE</div>
+        <div class="line">════════════════════════════</div>
+
+        <div class="line">Ancien opérateur d’une unité spécialisée engagée dans des opérations extérieures classifiées.</div>
+        <div class="line">Le sujet s’est rapidement imposé comme élément central grâce à :</div>
+        <div class="line">- Capacités de commandement</div>
+        <div class="line">- Gestion du stress en situation critique</div>
+        <div class="line">- Cohésion avec son escouade</div>
+        <div class="line">Reconnu pour maintenir ses hommes opérationnels dans des conditions extrêmes.</div>
+
+
+        <div class="line section-title">INCIDENT MAJEUR</div>
+        <div class="line">════════════════════════════</div>
+
+        <div class="line">Lors d’une mission à haut risque, l’unité du sujet a été prise sous feu ennemi.</div>
+        <div class="line">SANTORO : Sacrifice pour couvrir le repli.</div>
+
+        <div class="line"></div>
+        <div class="line"><span class="label">Conséquences :</span></div>
+        <div class="line">- Disparition de l’opérateur</div>
+        <div class="line">- Déclaré mort au combat</div>
+
+
+        <div class="line section-title">ÉVÉNEMENT EXCEPTIONNEL</div>
+        <div class="line">════════════════════════════</div>
+
+        <div class="line">Réapparition confirmée de SANTORO.</div>
+
+        <div class="line"></div>
+        <div class="line"><span class="label">Réaction du sujet HUNTER :</span></div>
+        <div class="line">- Reconnaissance immédiate</div>
+        <div class="line">- Contestation du commandement</div>
+        <div class="line">- Demande d’accès aux dossiers classifiés</div>
+
+        `;
+    }
+}
+
+    if (section === "fenrir") {
+    terminal.innerHTML = `
+
+    <div class="identity-container">
+        <div>
+            <div class="line main-title">DOSSIER – FENRIR</div>
+            <div class="line">════════════════════════════</div>
+
+            <div class="line"><span class="label">Nom :</span> VEGA</div>
+            <div class="line"><span class="label">Prénom :</span> SANTORO</div>
+            <div class="line"><span class="label">Alias :</span> FENRIR</div>
+            <div class="line"><span class="label">Statut :</span> ACTIF (SAS)</div>
+            <div class="line"><span class="label">Ancien statut :</span> DÉCÉDÉ (ANNULÉ)</div>
+            <div class="line"><span class="label">Lien :</span> Jaxon Hunter (Frère)</div>
+        </div>
+
+        <div class="identity-photo">
+            <img src="https://i.goopics.net/ltop6d.jpg">
+        </div>
+    </div>
+
+
+    <div class="line section-title">HISTORIQUE OPÉRATIONNEL</div>
+    <div class="line">════════════════════════════</div>
+
+    <div class="line">Ancien membre d’une unité spécialisée engagée dans des opérations extérieures à haut risque.</div>
+    <div class="line">Le sujet s’est distingué par :</div>
+    <div class="line">- Infiltration</div>
+    <div class="line">- Combat rapproché</div>
+    <div class="line">- Adaptation en environnement hostile</div>
+
+
+    <div class="line">════════════════════════════</div>
+    <div class="line section-title">OPÉRATION CLASSIFIÉE</div>
+    <div class="line">════════════════════════════</div>
+
+    <div class="line">Mission sous feu ennemi.</div>
+    <div class="line">Couverture assurée pour le repli de l’unité.</div>
+
+    <div class="line"></div>
+    <div class="line"><span class="label">Conséquence officielle :</span></div>
+    <div class="line">- Déclaré Mort au Combat</div>
+    <div class="line">- Corps non récupéré</div>
+    <div class="line">- Dossier archivé</div>
+
+
+    <div class="line">════════════════════════════</div>
+    <div class="line section-title">STATUT EXCEPTIONNEL</div>
+    <div class="line">════════════════════════════</div>
+
+    <div class="line">Réapparition confirmée après plusieurs années.</div>
+    <div class="line"><span class="label">Circonstances :</span> INCONNUES</div>
+
+    <div class="line"></div>
+    <div class="line"><span class="label">État physique :</span> viable</div>
+    <div class="line"><span class="label">État psychologique :</span> instable</div>
+    <div class="line"><span class="label">Mémoire :</span> partiellement altérée</div>
+
+
+    <div class="line">════════════════════════════</div>
+    <div class="line section-title">STATUT ACTUEL</div>
+    <div class="line">════════════════════════════</div>
+
+    <div class="line">⚠ DOSSIER SURVEILLÉ ⚠</div>
+    <div class="line">Enquête interne ouverte</div>
+    <div class="line">Reclassée : SECRET DÉFENSE</div>
+
+    `;
+}
+
+    if (section === "psy") {
+    terminal.innerHTML = `
+
+    <div class="line main-title">RAPPORTS PSYCHOLOGIQUES</div>
+    <div class="line">════════════════════════════</div>
+
+
+    <div class="psy-container">
+
+        <!-- GARM -->
+        <div class="psy-column">
+            <div class="psy-title">HUNTER, JAXON (GARM)</div>
+            <div class="line">════════════════════════════</div>
+
+            <div class="line"><span class="label">IMPACT POST-OPÉRATIONNEL :</span></div>
+            <div class="line">- Baisse de discipline administrative</div>
+            <div class="line">- Implication excessive en mission</div>
+            <div class="line">- Tendance à ignorer les ordres</div>
+            <div class="line">(si conflit avec la sécurité de son escouade)</div>
+
+            <div class="line"></div>
+            <div class="line"><span class="label">OBSERVATION :</span></div>
+            <div class="line">- Aucune défaillance opérationnelle majeure</div>
+            <div class="line">- Efficacité maintenue, voire accrue</div>
+
+            <div class="line"></div>
+            <div class="line"><span class="label">ÉVALUATION INTERNE :</span></div>
+            <div class="line">- Sens du devoir élevé</div>
+            <div class="line">- Loyauté extrême envers ses coéquipiers</div>
+            <div class="line">- Résistance psychologique élevée</div>
+
+            <div class="line"></div>
+            <div class="line"><span class="label">⚠ RISQUES IDENTIFIÉS :</span></div>
+            <div class="line">- Attachement prioritaire à certaines cibles</div>
+            <div class="line">(notamment SANTORO)</div>
+            <div class="line">- Désobéissance possible en cas de conflit moral</div>
+        </div>
+
+
+        <!-- DIVIDER -->
+        <div class="psy-divider"></div>
+
+
+        <!-- FENRIR -->
+        <div class="psy-column">
+            <div class="psy-title">VEGA, SANTORO (FENRIR)</div>
+            <div class="line">════════════════════════════</div>
+
+            <div class="line"><span class="label">ÉVALUATION INTERNE :</span></div>
+            <div class="line">- Capacités opérationnelles intactes ou supérieures</div>
+            <div class="line">- Obéissance sélective</div>
+            <div class="line">- Signes de conditionnement comportemental</div>
+            <div class="line">(origine non identifiée)</div>
+            <div class="line">- Profil instable mais fonctionnel en mission</div>
+
+            <div class="line"></div>
+            <div class="line"><span class="label">⚠ RISQUES IDENTIFIÉS :</span></div>
+            <div class="line">- Déclencheurs inconnus</div>
+            <div class="line">- Loyauté non garantie hors environnement contrôlé</div>
+
+            <div class="line"></div>
+            <div class="line"><span class="label">NOTE INTERNE (NON OFFICIELLE) :</span></div>
+            <div class="line">“Santoro est mort sur le terrain.</div>
+            <div class="line">Ce qui est revenu… n’est plus tout à fait le même homme.”</div>
+        </div>
+
+    </div>
+
+    `;
+}
+
+    
     if (section === "classified") {
         await typeLine("> NIVEAU OMEGA");
         await typeLine("> AUTHENTIFICATION REQUISE");
