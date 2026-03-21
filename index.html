@@ -130,8 +130,7 @@ function renderHeader() {
 async function bootSequence() {
     clearTerminal();
 
-    await typeLine("SAN ANDREAS SECURITY (SAS)");
-    await typeLine("DÉPARTEMENT DES OPÉRATIONS SPÉCIALES");
+    renderHeader();
     await typeLine("> ------------------------------------------");
     await typeLine("> INITIALISATION...");
     await typeLine("> CONNEXION AU SERVEUR...");
