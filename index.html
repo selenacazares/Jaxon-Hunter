@@ -459,7 +459,7 @@ async function loadSection(section) {
 
     /* CLASSIFIED */
     if (section === "classified") {
-        renderHeader();
+        renderHeader("DOSSIERS CONFIDENTIELS - CLASSÉS SECRETS");
     
         await typeLine("> NIVEAU OMEGA");
         await typeLine("> AUTHENTIFICATION REQUISE");
@@ -482,23 +482,70 @@ async function loadSection(section) {
                     renderHeader(); // ✅ important
     
                     terminal.innerHTML += `
-                    <div class="main-title">DOSSIERS CONFIDENTIELS</div>
+                    <div class="main-title">ACCÈS VALIDÉ – NIVEAU OMEGA</div>
+                    <div class="main-title">----------------------------</div>
     
                     <div class="psy-container">
-    
-                        <div class="psy-column">
-                            <div class="psy-title">HUNTER, JAXON (GARM)</div>
-                            <div>➡ SORTIE VOLONTAIRE</div>
-                        </div>
-    
-                        <div class="psy-divider"></div>
-    
+
+                        <!-- FENRIR -->
                         <div class="psy-column">
                             <div class="psy-title">VEGA, SANTORO (FENRIR)</div>
-                            <div>➡ SORTIE CONTRÔLÉE</div>
+                            <div class="line">════════════════════════════</div>
+
+                            <div class="line"><span class="label">DÉCISION DU COMMANDEMENT :</span></div>
+                            <div class="line">- Statut administratif incohérent</div>
+                            <div class="line">- Risques psychologiques identifiés</div>
+                            <div class="line">- Réintégration impossible</div>
+
+                            <div class="line"></div>
+                            <div class="line">➡ SORTIE ADMINISTRATIVE CONTRÔLÉE</div>
+
+                            <div class="line"></div>
+                            <div class="line"><span class="label">TRANSFERT :</span> SAN ANDREAS SECURITY (SAS)</div>
+                            <div class="line">- Surveillance indirecte</div>
+                            <div class="line">- Exploitation opérationnelle</div>
+
+                            <div class="line"></div>
+                            <div class="line"><span class="label">STATUT ACTUEL :</span></div>
+                            <div class="line">Nom : FENRIR</div>
+                            <div class="line">Niveau : ACTIF</div>
                         </div>
-    
+
+                        <!-- DIVIDER -->
+                        <div class="psy-divider"></div>
+
+                        <!-- GARM -->
+                        <div class="psy-column">
+                            <div class="psy-title">HUNTER, JAXON (GARM)</div>
+                            <div class="line">════════════════════════════</div>
+
+                            <div class="line"><span class="label">DÉCISION DU COMMANDEMENT :</span></div>
+                            <div class="line">- Implication personnelle dans un dossier classifié</div>
+                            <div class="line">- Remise en question de la hiérarchie</div>
+                            <div class="line">- Lien direct avec FENRIR</div>
+
+                            <div class="line"></div>
+                            <div class="line">➡ SORTIE VOLONTAIRE ENCADRÉE</div>
+
+                            <div class="line"></div>
+                            <div class="line"><span class="label">TRANSFERT SAS :</span></div>
+                            <div class="line">- Surveillance indirecte</div>
+                            <div class="line">- Exploitation des compétences terrain</div>
+
+                            <div class="line"></div>
+                            <div class="line"><span class="label">STATUT :</span></div>
+                            <div class="line">Nom : GARM</div>
+                            <div class="line">Niveau : MODÉRÉ</div>
+                        </div>
+
                     </div>
+
+                    <div class="line">════════════════════════════</div>
+
+                    <div class="line glitch">[NOTE INTERNE NON ARCHIVÉE]</div>
+                    <div class="line glitch">“Si Fenrir devient incontrôlable…</div>
+                    <div class="line glitch">Garm est la seule variable de stabilisation.”</div>
+                    `;
     
                     <div class="glitch">████████████</div>
                     `;
