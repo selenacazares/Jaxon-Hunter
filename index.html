@@ -137,20 +137,53 @@ function showSimpleMenu() {
 }
 
 /* BOOT */
-function bootSequence() {
-    terminal.innerHTML = `
-    <div class="line header-main">SAN ANDREAS SECURITY (SAS)</div>
-    <div class="line header-sub">DÉPARTEMENT DES OPÉRATIONS SPÉCIALES</div>
-    <div class="line">> INITIALISATION...</div>
-    <div class="line">> CHARGEMENT....07%</div>
-    <div class="line">> CHARGEMENT....23%</div>
-    <div class="line">> CHARGEMENT....54%</div>
-    <div class="line">> CHARGEMENT....89%</div>
-    <div class="line">> ACCÈS AUTORISÉ</div>
+async function bootSequence() {
+    clearTerminal();
+
+    const main = document.createElement("div");
+    main.classList.add("line", "header-main");
+    main.textContent = "SAN ANDREAS SECURITY (SAS)";
+    terminal.appendChild(main);
+
+    const sub = document.createElement("div");
+    sub.classList.add("line", "header-sub");
+    sub.textContent = "DÉPARTEMENT DES OPÉRATIONS SPÉCIALES";
+    terminal.appendChild(sub);
+
+    await typeLine("> ------------------------------------------");
+    await typeLine("> INITIALISATION...");
+    await typeLine("> CONNEXION AU SERVEUR...");
+    await typeLine("> CHIFFREMENT VALIDÉ");
+    await typeLine("> ------------------------------------------");
+    await typeLine("> CHARGEMENT....07%");
+    await typeLine("> CHARGEMENT....23%");
+    await typeLine("> CHARGEMENT....54%");
+    await typeLine("> CHARGEMENT....89%");
+    await typeLine("> CHARGEMENT TERMINÉ");
+    await typeLine("> ------------------------------------------");
+    await typeLine("> ACCÈS AUTORISÉ");
+    await typeLine("> BIENVENUE, OPÉRATEUR");
+    await typeLine("");
+
+    menu();
+}
+
+/* MENU */
+function menu() {
+    const menu = document.createElement("div");
+    menu.classList.add("menu");
+
+    menu.innerHTML = `
+        <span onclick="loadSection('garm')">[1] DOSSIER PERSONNEL - GARM</span><br>
+        <span onclick="loadSection('fenrir')">[2] DOSSIER PERSONNEL - FENRIR</span><br>
+        <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUES</span><br>
+        <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS (Accès sécurisé) </span>
     `;
 
-    setTimeout(showSimpleMenu, 1200);
+    terminal.appendChild(menu);
 }
+
+
 
 /* LOAD SECTION */
 async function loadSection(section) {
