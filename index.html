@@ -252,28 +252,75 @@ async function loadSection(section) {
 
     /* PSY */
     if (section === "psy") {
-        terminal.innerHTML = `
-        <div class="line main-title">RAPPORTS PSYCHOLOGIQUES</div>
-        <div class="line">════════════════════════════</div>
+    terminal.innerHTML = `
 
-        <div class="psy-container">
+    <div class="line main-title">RAPPORTS PSYCHOLOGIQUES</div>
+    <div class="line">════════════════════════════</div>
 
-            <div class="psy-column">
-                <div class="psy-title">HUNTER, JAXON (GARM)</div>
-                <div class="line">- Baisse de discipline</div>
-                <div class="line">- Implication excessive</div>
-            </div>
 
-            <div class="psy-divider"></div>
+    <div class="psy-container">
 
-            <div class="psy-column">
-                <div class="psy-title glitch">VEGA, SANTORO (FENRIR)</div>
-                <div class="line">- Instable mais opérationnel</div>
-            </div>
+        <!-- GARM -->
+        <div class="psy-column">
+            <div class="psy-title">HUNTER, JAXON (GARM)</div>
+            <div class="line">════════════════════════════</div>
 
+            <div class="line"><span class="label">IMPACT POST-OPÉRATIONNEL :</span></div>
+            <div class="line">- Baisse de discipline administrative</div>
+            <div class="line">- Implication excessive en mission</div>
+            <div class="line">- Tendance à ignorer les ordres</div>
+            <div class="line">(si conflit avec la sécurité de son escouade)</div>
+
+            <div class="line"></div>
+            <div class="line"><span class="label">OBSERVATION :</span></div>
+            <div class="line">- Aucune défaillance opérationnelle majeure</div>
+            <div class="line">- Efficacité maintenue, voire accrue</div>
+
+            <div class="line"></div>
+            <div class="line"><span class="label">ÉVALUATION INTERNE :</span></div>
+            <div class="line">- Sens du devoir élevé</div>
+            <div class="line">- Loyauté extrême envers ses coéquipiers</div>
+            <div class="line">- Résistance psychologique élevée</div>
+
+            <div class="line"></div>
+            <div class="line"><span class="label">⚠ RISQUES IDENTIFIÉS :</span></div>
+            <div class="line">- Attachement prioritaire à certaines cibles</div>
+            <div class="line">(notamment SANTORO)</div>
+            <div class="line">- Désobéissance possible en cas de conflit moral</div>
         </div>
-        `;
-    }
+
+
+        <!-- DIVIDER -->
+        <div class="psy-divider"></div>
+
+
+        <!-- FENRIR -->
+        <div class="psy-column">
+            <div class="psy-title">VEGA, SANTORO (FENRIR)</div>
+            <div class="line">════════════════════════════</div>
+
+            <div class="line"><span class="label">ÉVALUATION INTERNE :</span></div>
+            <div class="line">- Capacités opérationnelles intactes ou supérieures</div>
+            <div class="line">- Obéissance sélective</div>
+            <div class="line">- Signes de conditionnement comportemental</div>
+            <div class="line">(origine non identifiée)</div>
+            <div class="line">- Profil instable mais fonctionnel en mission</div>
+
+            <div class="line"></div>
+            <div class="line"><span class="label">⚠ RISQUES IDENTIFIÉS :</span></div>
+            <div class="line">- Déclencheurs inconnus</div>
+            <div class="line">- Loyauté non garantie hors environnement contrôlé</div>
+
+            <div class="line"></div>
+            <div class="line"><span class="label">NOTE INTERNE (NON OFFICIELLE) :</span></div>
+            <div class="line">“Santoro est mort sur le terrain.</div>
+            <div class="line">Ce qui est revenu… n’est plus tout à fait le même homme.”</div>
+        </div>
+
+    </div>
+
+    `;
+}
 
     /* CLASSIFIED */
     if (section === "classified") {
