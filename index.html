@@ -257,7 +257,7 @@ function showMainMenu() {
 async function loadSection(section) {
     clearTerminal();
 
- // GARM / FENRIR / PSY ICI 
+ // GARM / FENRIR / PSY 
 
     async function loadSection(section) {
     clearTerminal();
@@ -563,13 +563,14 @@ async function loadSection(section) {
         });
     }
 
-    const back = document.createElement("div");
-    back.classList.add("line");
-    back.textContent = "> RETOUR MENU";
-    back.style.cursor = "pointer";
-    back.onclick = showSimpleMenu;
+    const backContainer = document.createElement("div");
+    backContainer.classList.add("menu");
 
-    terminal.appendChild(back);
+    backContainer.innerHTML = `
+    <span onclick="showSimpleMenu()">> RETOUR MENU</span>
+    `;
+
+    terminal.appendChild(backContainer);
 }
 
 /* START */
