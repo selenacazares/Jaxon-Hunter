@@ -19,15 +19,17 @@ body {
 
 /* TITRES */
 .header-main {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
-    text-shadow: 0 0 10px #00ff9c;
+    text-shadow: 0 0 12px #00ff9c;
 }
-.header-sub { opacity: 0.8; }
-.main-title {
-    font-size: 26px;
-    text-shadow: 0 0 6px #00ff9c;
+
+.header-sub {
+    font-size: 20px;
+    text-shadow: 0 0 8px #00ff9c;
+    opacity: 0.9;
 }
+    
 .section-title {
     font-size: 20px;
     text-shadow: 0 0 6px #00ff9c;
@@ -107,6 +109,23 @@ function clearTerminal() {
     terminal.innerHTML = "";
 }
 
+function renderHeader() {
+    const main = document.createElement("div");
+    main.classList.add("line", "header-main");
+    main.textContent = "SAN ANDREAS SECURITY (SAS)";
+    terminal.appendChild(main);
+
+    const sub = document.createElement("div");
+    sub.classList.add("line", "header-sub");
+    sub.textContent = "DÉPARTEMENT DES OPÉRATIONS SPÉCIALES";
+    terminal.appendChild(sub);
+
+    const separator = document.createElement("div");
+    separator.classList.add("line");
+    separator.textContent = "------------------------------------------";
+    terminal.appendChild(separator);
+}
+    
 /* BOOT */
 async function bootSequence() {
     clearTerminal();
@@ -122,7 +141,7 @@ async function bootSequence() {
     await typeLine("> CHARGEMENT....54%");
     await typeLine("> CHARGEMENT....89%");
     await typeLine("> CHARGEMENT TERMINÉ");
-    await typeLine("> ACCÈS AUTORISÉ");
+    await typeLine("> ------------------------------------------");
     await typeLine("> BIENVENUE, OPÉRATEUR");
     await typeLine("");
 
@@ -146,18 +165,19 @@ function showMenuAfterBoot() {
 function showSimpleMenu() {
     clearTerminal();
 
-    terminal.innerHTML = `
-    <div class="line header-main">SAN ANDREAS SECURITY (SAS)</div>
-    <div class="line header-sub">DÉPARTEMENT DES OPÉRATIONS SPÉCIALES</div>
-    <div class="line">------------------------------------------</div>
+    renderHeader();
 
-    <div class="menu">
-        <span onclick="loadSection('garm')">[1] GARM</span>
-        <span onclick="loadSection('fenrir')">[2] FENRIR</span>
+    const menu = document.createElement("div");
+    menu.classList.add("menu");
+
+    menu.innerHTML += `
+        <span onclick="loadSection('garm')">[1] DOSSIER PERSONNEL - GARM</span>
+        <span onclick="loadSection('fenrir')">[2] DOSSIER PERSONNEL - FENRIR</span>
         <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUES</span>
-        <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS</span>
-    </div>
+        <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS (Accès sécurisé)</span>
     `;
+
+    terminal.appendChild(menu);
 }
 
 /* SECTIONS */
@@ -166,7 +186,9 @@ async function loadSection(section) {
 
     /* GARM */
     if (section === "garm") {
-        terminal.innerHTML = `
+        renderHeader();
+        
+        terminal.innerHTML += `
         <div class="main-title">DOSSIER – GARM</div>
         <div>Nom : HUNTER</div>
         <div>Prénom : JAXON</div>
@@ -179,7 +201,9 @@ async function loadSection(section) {
 
     /* FENRIR */
     if (section === "fenrir") {
-        terminal.innerHTML = `
+        renderHeader();
+        
+        terminal.innerHTML += `
         <div class="main-title">DOSSIER – FENRIR</div>
         <div>Nom : VEGA</div>
         <div>Prénom : SANTORO</div>
@@ -189,7 +213,9 @@ async function loadSection(section) {
 
     /* PSY */
     if (section === "psy") {
-        terminal.innerHTML = `
+        renderHeader();
+        
+        terminal.innerHTML += `
         <div class="main-title">RAPPORTS PSYCHOLOGIQUES</div>
 
         <div class="psy-container">
@@ -210,6 +236,7 @@ async function loadSection(section) {
 
     /* CLASSIFIED */
     if (section === "classified") {
+        renderHeader();
         await typeLine("> NIVEAU OMEGA");
         await typeLine("> AUTHENTIFICATION REQUISE");
 
