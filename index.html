@@ -552,6 +552,15 @@ async function loadSection(section) {
                     glitch.classList.add("line","glitch");
                     terminal.appendChild(glitch);
 
+                    const backContainer = document.createElement("div");
+                    backContainer.classList.add("menu");
+
+                    backContainer.innerHTML = `
+                    <span onclick="showSimpleMenu()">> RETOUR MENU</span>
+                    `;
+
+                    terminal.appendChild(backContainer);
+
                 } else {
 
                     await typeLine("");
