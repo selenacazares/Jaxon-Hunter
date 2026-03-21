@@ -456,7 +456,7 @@ async function loadSection(section) {
 
     /* CLASSIFIED */
     if (section === "classified") {
-        renderHeader();
+        renderHeader("DOSSIERS CONFIDENTIELS");
     
         await typeLine("> NIVEAU OMEGA");
         await typeLine("> AUTHENTIFICATION REQUISE");
@@ -476,7 +476,7 @@ async function loadSection(section) {
                 if (input.value === "07235489") {
     
                     clearTerminal();
-                    renderHeader(); // ✅ important
+                    renderHeader("DOSSIERS CONFIDENTIELS"); // 
     
                     terminal.innerHTML += `
                     <div class="main-title">DOSSIERS CONFIDENTIELS</div>
@@ -506,7 +506,7 @@ async function loadSection(section) {
     
                     await typeLine("");
                     await typeLine("> AUTHENTIFICATION ÉCHOUÉE");
-                    await typeLine("> MOT DE PASSE ERRONÉ");
+                    await typeLine("> MOT DE PASSE ERRONÉ - VEUILLEZ SAISIR LE MOT DE PASSE");
     
                     input.value = "";
     
