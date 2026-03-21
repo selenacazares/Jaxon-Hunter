@@ -74,6 +74,31 @@ body {
     100% {transform: translate(0);}
 }
 
+.scan-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.scan-line {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        #00ff9c,
+        transparent
+    );
+    box-shadow: 0 0 10px #00ff9c;
+    animation: scanMove 3s linear infinite;
+}
+
+@keyframes scanMove {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
 
 /* LAYOUT */
 .identity-container {
@@ -160,7 +185,10 @@ body {
 
 <body>
 
-<div id="terminal"></div>
+<div class="scan-container">
+    <div class="scan-line"></div>
+    <div id="terminal"></div>
+</div>
 
 <script>
 const terminal = document.getElementById("terminal");
