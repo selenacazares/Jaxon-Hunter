@@ -117,6 +117,44 @@ body {
     color: #00ff9c;
 }
 
+/* LAYOUT DOSSIER */
+.file-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.file-left {
+    flex: 2;
+}
+
+.file-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* CADRE AGENT */
+.agent-card {
+    border: 2px solid #00ff9c;
+    padding: 10px;
+    box-shadow: 0 0 10px #00ff9c;
+}
+
+.agent-photo {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #00ff9c;
+    margin-bottom: 10px;
+}
+
+.agent-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+}
 
     
 </style>
@@ -231,25 +269,31 @@ async function loadSection(section) {
         terminal.innerHTML += `
     
         <div class="identity-card">
-    
-            <div class="line main-title">DOSSIER PERSONNEL – AGENT : GARM</div>
-            <div class="line">════════════════════════════</div>
-    
+        
             <div class="identity-container">
+        
+                <!-- GAUCHE -->
                 <div class="identity-left">
+        
+                    <div class="line section-title">DOSSIER PERSONNEL – AGENT : GARM</div>
+                    <div class="line">════════════════════════════</div>
+        
                     <div class="line"><span class="label">Nom :</span> HUNTER</div>
                     <div class="line"><span class="label">Prénom :</span> JAXON</div>
                     <div class="line"><span class="label">Alias :</span> GARM</div>
                     <div class="line"><span class="label">Statut :</span> ACTIF (SAS)</div>
                     <div class="line"><span class="label">Ancien statut :</span> SORTIE VOLONTAIRE</div>
                     <div class="line"><span class="label">Lien :</span> Santoro Vega (Frère)</div>
+        
                 </div>
-    
+        
+                <!-- DROITE -->
                 <div class="identity-photo">
                     <img src="https://i.goopics.net/8z6var.jpg">
                 </div>
+        
             </div>
-    
+        
         </div>
         
         <div class="line section-title">HISTORIQUE MILITAIRE</div>
