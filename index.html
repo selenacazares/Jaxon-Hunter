@@ -119,21 +119,34 @@ function clearTerminal() {
 
 /* MENU SIMPLE */
 function showSimpleMenu() {
+    clearTerminal();
 
-    terminal.innerHTML = `
-    <div class="line header-main">SAN ANDREAS SECURITY (SAS)</div>
-    <div class="line header-sub">DÉPARTEMENT DES OPÉRATIONS SPÉCIALES</div>
-    <div class="line">════════════════════════════</div>
-    <div class="line">Veuillez sélectionner un dossier</div>
-    <div class="line">════════════════════════════</div>
+    const main = document.createElement("div");
+    main.classList.add("line", "header-main");
+    main.textContent = "SAN ANDREAS SECURITY (SAS)";
+    terminal.appendChild(main);
 
-    <div class="menu">
-        <span onclick="loadSection('garm')">[1] DOSSIER PERSONNEL - GARM</span>
-        <span onclick="loadSection('fenrir')">[2] DOSSIER PERSONNEL - FENRIR</span>
-        <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUES</span>
+    const sub = document.createElement("div");
+    sub.classList.add("line", "header-sub");
+    sub.textContent = "DÉPARTEMENT DES OPÉRATIONS SPÉCIALES";
+    terminal.appendChild(sub);
+
+    const separator = document.createElement("div");
+    separator.classList.add("line");
+    separator.textContent = "------------------------------------------";
+    terminal.appendChild(separator);
+
+    const menu = document.createElement("div");
+    menu.classList.add("menu");
+
+    menu.innerHTML = `
+        <span onclick="loadSection('garm')">[1] DOSSIER PERSONNEL - GARM</span><br>
+        <span onclick="loadSection('fenrir')">[2] DOSSIER PERSONNEL - FENRIR</span><br>
+        <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUES</span><br>
         <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS</span>
-    </div>
     `;
+
+    terminal.appendChild(menu);
 }
 
 /* BOOT */
@@ -165,7 +178,7 @@ async function bootSequence() {
     await typeLine("> BIENVENUE, OPÉRATEUR");
     await typeLine("");
 
-    menu();
+    showSimpleMenu();
 }
 
 /* MENU */
