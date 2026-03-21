@@ -79,6 +79,43 @@ body {
     50% {transform: translate(1px,-1px);}
     100% {transform: translate(0);}
 }
+
+.identity-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 15px;
+}
+
+.identity-left {
+    flex: 1;
+}
+
+.identity-photo {
+    width: 200px;
+    height: 260px;
+    border: 2px solid #00ff9c;
+    box-shadow: 0 0 10px #00ff9c;
+    position: relative;
+}
+
+.identity-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+}
+
+/* effet cadre stylé */
+.identity-photo::before {
+    content: "ID PHOTO";
+    position: absolute;
+    top: -18px;
+    left: 0;
+    font-size: 12px;
+    color: #00ff9c;
+}
+    
 </style>
 </head>
 
@@ -152,10 +189,10 @@ function showMenuAfterBoot() {
     const menu = document.createElement("div");
     menu.classList.add("menu");
     menu.innerHTML = `
-        <span onclick="loadSection('garm')">[1] GARM</span>
-        <span onclick="loadSection('fenrir')">[2] FENRIR</span>
+        <span onclick="loadSection('garm')">[1] DOSSIER PERSONNEL - GARM</span>
+        <span onclick="loadSection('fenrir')">[2] DOSSIER PERSONNEL - FENRIR</span>
         <span onclick="loadSection('psy')">[3] RAPPORTS PSYCHOLOGIQUES</span>
-        <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS</span>
+        <span onclick="loadSection('classified')">[4] DOSSIERS CONFIDENTIELS (Accès sécurisé)</span>
     `;
     terminal.appendChild(menu);
 }
@@ -188,25 +225,49 @@ async function loadSection(section) {
         renderHeader();
         
         terminal.innerHTML += `
-        <div class="main-title">DOSSIER – GARM</div>
-        <div>Nom : HUNTER</div>
-        <div>Prénom : JAXON</div>
-        <div>Alias : GARM</div>
-        <div>Statut : ACTIF (SAS)</div>
-        <div>Ancien statut : SORTIE VOLONTAIRE</div>
-        <div>Lien : Santoro Vega (Frère)</div>
+        <div class="main-title">DOSSIER PERSONNEL – GARM</div>
+
+        <div class="identity-container">
+
+           <div class="identity-left">
+                <div class="line"><span class="label">Nom :</span> HUNTER</div>
+                <div class="line"><span class="label">Prénom :</span> JAXON</div>
+                <div class="line"><span class="label">Alias :</span> GARM</div>
+                <div class="line"><span class="label">Statut :</span> ACTIF (SAS)</div>
+                <div class="line"><span class="label">Ancien statut :</span> SORTIE VOLONTAIRE</div>
+                <div class="line"><span class="label">Lien :</span> Santoro Vega (Frère)</div>
+            </div>
+
+            <div class="identity-photo">
+                <img src="https://i.goopics.net/8z6var.jpg">
+            </div>
+
+        </div>
         `;
-    }
 
     /* FENRIR */
     if (section === "fenrir") {
         renderHeader();
         
         terminal.innerHTML += `
-        <div class="main-title">DOSSIER – FENRIR</div>
-        <div>Nom : VEGA</div>
-        <div>Prénom : SANTORO</div>
-        <div>Alias : FENRIR</div>
+        <div class="main-title">DOSSIER PERSONNEL – FENRIR</div>
+
+        <div class="identity-container">
+
+            <div class="identity-left">
+                <div class="line"><span class="label">Nom :</span> VEGA</div>
+                <div class="line"><span class="label">Prénom :</span> SANTORO</div>
+                <div class="line"><span class="label">Alias :</span> FENRIR</div>
+                <div class="line"><span class="label">Statut :</span> ACTIF (SAS)</div>
+                <div class="line"><span class="label">Ancien statut :</span> DÉCÉDÉ (ANNULÉ)</div>
+                <div class="line"><span class="label">Lien :</span> Jaxon Hunter (Frère)</div>
+            </div>
+
+            <div class="identity-photo">
+                <img src="https://i.goopics.net/ltop6d.jpg">
+            </div>
+
+        </div>
         `;
     }
 
