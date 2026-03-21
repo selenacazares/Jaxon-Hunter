@@ -171,6 +171,7 @@ async function bootSequence() {
     clearTerminal();
 
     renderHeader();
+    await typeLine("------------------------------------------");
     await typeLine("> INITIALISATION...");
     await typeLine("> CONNEXION AU SERVEUR...");
     await typeLine("------------------------------------------");
@@ -232,7 +233,7 @@ async function loadSection(section) {
         <div class="identity-card">
     
             <div class="line main-title">DOSSIER PERSONNEL – AGENT : GARM</div>
-            <div class="line">════════════════════════════════════════════════════════</div>
+            <div class="line">════════════════════════════</div>
     
             <div class="identity-container">
                 <div class="identity-left">
@@ -251,8 +252,9 @@ async function loadSection(section) {
     
         </div>
     
+        <div class="line">--------------------------------------------------------------------</div>
     
-        <div class="line section-title">HISTORIQUE OPÉRATIONNEL</div>
+        <div class="line section-title">HISTORIQUE MILITAIRE</div>
         <div class="line">════════════════════════════</div>
     
         <div class="line">Ancien opérateur d’une unité spécialisée engagée dans des opérations extérieures classifiées.</div>
@@ -303,7 +305,7 @@ async function loadSection(section) {
         <div class="identity-card">
     
             <div class="line main-title">DOSSIER PERSONNEL – AGENT : FENRIR</div>
-            <div class="line">════════════════════════════════════════════════════════</div>
+            <div class="line">════════════════════════════</div>
     
             <div class="identity-container">
                 <div class="identity-left">
@@ -321,7 +323,9 @@ async function loadSection(section) {
             </div>
     
         </div>
-        
+    
+        <div class="line">--------------------------------------------------------------------</div>
+    
         <div class="line section-title">HISTORIQUE OPÉRATIONNEL</div>
         <div class="line">════════════════════════════</div>
     
@@ -377,8 +381,8 @@ async function loadSection(section) {
     terminal.innerHTML += `
 
     <div class="line section-title">RAPPORTS PSYCHOLOGIQUES DES AGENTS</div>
-    <div class="line">════════════════════════════</div>
-    <div class="line">════════════════════════════</div>
+    <div class="line">════════════════════════════════════════════════════════════════════════════════════</div>
+
 
     <div class="psy-container">
 
@@ -412,7 +416,7 @@ async function loadSection(section) {
             <div class="line">- Attachement prioritaire à certaines cibles</div>
             <div class="line">(notamment SANTORO)</div>
             <div class="line">- Désobéissance possible en cas de conflit moral</div>
-            <div class="line">----------------------------</div>
+            <div class="line">------------------------------------------------------------------------------------</div>
         </div>
 
 
@@ -455,57 +459,51 @@ async function loadSection(section) {
     /* CLASSIFIED */
     if (section === "classified") {
         renderHeader();
-    
         await typeLine("> NIVEAU OMEGA");
         await typeLine("> AUTHENTIFICATION REQUISE");
-    
+
         const input = document.createElement("input");
-        input.type = "password";
-        input.style.background = "black";
-        input.style.color = "#00ff9c";
-        input.style.border = "1px solid #00ff9c";
-    
         terminal.appendChild(input);
         input.focus();
-    
+
         input.addEventListener("keydown", async (e) => {
             if (e.key === "Enter") {
-    
+
                 if (input.value === "07235489") {
-    
                     clearTerminal();
-                    renderHeader(); // ✅ IMPORTANT
-    
+
                     terminal.innerHTML += `
                     <div class="main-title">DOSSIERS CONFIDENTIELS</div>
-    
+
                     <div class="psy-container">
-    
+
                         <div class="psy-column">
                             <div class="psy-title">HUNTER, JAXON (GARM)</div>
                             <div>➡ SORTIE VOLONTAIRE</div>
                         </div>
-    
+
                         <div class="psy-divider"></div>
-    
+
                         <div class="psy-column">
                             <div class="psy-title">VEGA, SANTORO (FENRIR)</div>
                             <div>➡ SORTIE CONTRÔLÉE</div>
                         </div>
-    
+
                     </div>
-    
+
                     <div class="glitch">████████████</div>
                     `;
-    
-                    addBackButton(); // ✅ bouton après accès
+
+                    addBackButton();
                 }
             }
         });
-    
-        addBackButton(); // ✅ bouton pendant saisie
+
         return;
     }
+
+    addBackButton();
+}
 
 /* RETOUR */
 function addBackButton() {
